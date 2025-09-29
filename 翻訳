@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シンプルな自動翻訳ツール</title>
+    <style>
+        /* ここにCSSのスタイルを記述し、見た目を整えます */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-section, .output-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fcfcfc;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 150px;
+            font-size: 16px;
+        }
+        select {
+            height: 40px;
+            min-height: auto;
+            margin-bottom: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4285f4; /* Google Blue */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3367d6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>自動翻訳ツール</h1>
+        
+        <div class="input-section">
+            <label for="source-language">翻訳元言語:</label>
+            <select id="source-language">
+                <option value="auto" selected>言語を自動検出</option>
+                <option value="ja">日本語</option>
+                <option value="en">英語</option>
+                <option value="zh">中国語</option>
+                <option value="ko">韓国語</option>
+            </select>
+            
+            <label for="input-text">翻訳したいテキストを入力してください:</label>
+            <textarea id="input-text" placeholder="ここにテキストを入力..."></textarea>
+        </div>
+
+        <button id="translate-button" onclick="translateText()">翻訳を実行</button>
+        
+        <div class="output-section">
+            <label for="target-language">翻訳先言語:</label>
+            <select id="target-language">
+                <option value="en" selected>英語</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中国語</option>
+                <option value="ko">韓国語</option>
+            </select>
+            
+            <label for="output-text">翻訳結果:</label>
+            <textarea id="output-text" readonly placeholder="翻訳結果がここに表示されます..."></textarea>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * この関数はボタンがクリックされたときに呼び出されますが、
+         * 実際の翻訳機能（API呼び出しなど）は未実装です。
+         * * 実際の翻訳には、Google Cloud Translation APIや
+         * Microsoft Translator APIなどの外部サービスと連携するための
+         * JavaScriptコードが必要です。
+         */
+        function translateText() {
+            const inputText = document.getElementById('input-text').value;
+            const sourceLang = document.getElementById('source-language').value;
+            const targetLang = document.getElementById('target-language').value;
+            const outputArea = document.getElementById('output-text');
+
+            if (!inputText.trim()) {
+                outputArea.value = "テキストが入力されていません。";
+                return;
+            }
+
+            // --- ★重要: 実際の翻訳ロジックを実装する場所です★ ---
+            // 例として、現時点では仮のメッセージを表示します
+            outputArea.value = `[${sourceLang}から${targetLang}へ翻訳を試行中...] \n\n この機能を実現するには、外部の翻訳API（例: Google Cloud Translation API, DeepL APIなど）と連携する複雑なJavaScriptコードが必要です。`;
+            
+            // 実際の実装例（擬似コード）:
+            /*
+            fetch('https://api.translation-service.com/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer YOUR_API_KEY' 
+                },
+                body: JSON.stringify({
+                    text: inputText,
+                    source: sourceLang,
+                    target: targetLang
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                outputArea.value = data.translatedText;
+            })
+            .catch(error => {
+                console.error('翻訳エラー:', error);
+                outputArea.value = '翻訳中にエラーが発生しました。APIキーやネットワーク接続を確認してください。';
+            });
+            */
+            // ------------------------------------------------------
+        }
+    </script>
+
+</body>
+</html>
