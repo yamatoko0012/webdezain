@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo TRPG KP Assistant - Gemini AI Integrated</title>
+    <style>
+        :root {
+            --main-bg-color: #f7f7f7;
+            --container-bg-color: #ffffff;
+            --kp-color: #0a4f78;
+            --player-color: #8c0000;
+            --border-color: #dddddd;
+            --hint-color: #ff9800; 
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --padding-unit: 10px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--main-bg-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1000px;
+            background-color: var(--container-bg-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--kp-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* シナリオ入力エリア */
+        #scenario-setup {
+            margin-bottom: 20px;
+            padding: var(--padding-unit);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: #fafafa;
+        }
+
+        #scenario-input {
+            width: 100%;
+            min-height: 200px;
+            padding: var(--padding-unit);
+            margin-bottom: var(--padding-unit);
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 14px;
+        }
+
+        #start-button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            background-color: var(--kp-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #start-button:hover {
+            background-color: #073a5a;
+        }
+
+        /* プレイエリア */
+        #game-area {
+            display: none;
+            border-top: 2px dashed var(--border-color);
+            padding-top: 20px;
+        }
+
+        #log-display {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            padding: var(--padding-unit);
+            margin-bottom: var(--padding-unit);
+            border-radius: 4px;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 8px 12px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .kp-message {
+            background-color: #e0f7fa;
+            color: var(--kp-color);
+            margin-right: auto;
+            border-bottom-left-radius: 0;
+            position: relative;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .player-message {
+            background-color: #ffebee;
+            color: var(--player-color);
+            margin-left: auto;
+            border-bottom-right-radius: 0;
+            text-align: right;
+            position: relative;
+            box-shadow: -1px 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .system-message, .state-message {
+            text-align: center;
+            color: gray;
+            font-style: italic;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .state-message {
+            color: var(--hint-color);
+            font-weight: bold;
+            border: 1px dashed var(--hint-color);
+            padding: 5px;
+            border-radius: 4px;
+            background-color: #fff3e0;
+        }
+        
+        .message strong {
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 3px;
+            opacity: 0.7;
+            font-weight: 600;
+        }
+        
+        /* 入力フォーム */
+        #action-form {
+            display: flex;
+        }
+
+        #action-input {
+            flex-grow: 1;
+            padding: var(--padding-unit);
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+
+        #send-button {
+            padding: var(--padding-unit) 15px;
+            background-color: var(--player-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #send-button:hover {
+            background-color: #6e0000;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                align-items: stretch;
+            }
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Solo TRPG KP アシスタント - Gemini AI 統合版 📜</h1>
+
+        <div id="scenario-setup">
+            <h2>1. シナリオを入力してください</h2>
+            <textarea id="scenario-input" placeholder="ここに、KPに読ませたいシナリオの概要、登場人物、初期配置、判定ルールなどを詳しく記述してください。例：&#10;[シナリオ名：霧の中の洋館]&#10;[プレイヤーの目的：脱出]&#10;[初期場所：エントランス]&#10;[特殊ルール：SANチェックは1d100で50以下成功]&#10;『あなたは深い霧に包まれた古い洋館のエントランスに立っています。目の前には分厚い扉と、奥へ続く廊下が見えます。どうしますか？』"></textarea>
+            <button id="start-button">ゲーム開始</button>
+        </div>
+
+        <div id="game-area">
+            <h2>2. ゲームログ</h2>
+            <div id="log-display">
+                <div class="system-message">「ゲーム開始」ボタンを押すと、KPからの最初のメッセージが表示されます。</div>
+            </div>
+            
+            <form id="action-form">
+                <input type="text" id="action-input" placeholder="あなたの行動を入力してください（例：廊下に進む、扉を調べる）" required>
+                <button type="submit" id="send-button">行動</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // DOM要素の取得
+        const scenarioInput = document.getElementById('scenario-input');
+        const startButton = document.getElementById('start-button');
+        const scenarioSetup = document.getElementById('scenario-setup');
+        const gameArea = document.getElementById('game-area');
+        const logDisplay = document.getElementById('log-display');
+        const actionForm = document.getElementById('action-form');
+        const actionInput = document.getElementById('action-input');
+
+        // 状態管理変数
+        let isGameStarted = false;
+        let currentScenarioText = '';
+        let gameLog = [];
+
+        // ゲームの状態（初期値）
+        let gameState = { 
+            location: 'エントランス', 
+            inventory: [] 
+        };
+
+        // 🚨 【重要】サーバーレス関数のエンドポイントURLを設定してください！
+        // このURLは、ご主人様がGoogle Cloud FunctionsなどでデプロイしたURLに置き換える必要があります。
+        const SERVERLESS_ENDPOINT = 'YOUR_SERVERLESS_FUNCTION_URL_HERE/api/kp-response'; 
+
+
+        // KPの応答をサーバーレス関数経由で取得する非同期関数
+        async function getKpResponseFromServerless(playerAction) {
+            // サーバーに送るためのデータペイロードを準備
+            const payload = {
+                scenario: currentScenarioText, // シナリオ本文全体
+                action: playerAction,           // プレイヤーの最新の行動
+                state: gameState,               // 現在のゲーム状態
+                history: gameLog.filter(log => log.speaker === 'KP' || log.speaker === 'Player') // 会話履歴
+            };
+            
+            // サーバーレス関数を呼び出す
+            try {
+                const response = await fetch(SERVERLESS_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error! Status: ${response.status} - ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+                // サーバーからの応答データ構造をチェック
+                if (data.kpText && data.newGameState) {
+                    
+                    // フロントエンドのゲーム状態をサーバー側の最新情報で更新
+                    gameState = data.newGameState;
+                    
+                    // システムメッセージとして状態変化を出力
+                    const inventoryDisplay = gameState.inventory.length > 0 ? gameState.inventory.join(', ') : 'なし';
+                    updateLog('System', `【状態更新】場所: ${gameState.location}、所持品: ${inventoryDisplay}`);
+
+                    return data.kpText; // KPの応答テキストを返却
+                } else {
+                     return "KP: 応答データが不完全です。サーバーレス関数の応答JSON形式を確認してください。";
+                }
+
+
+            } catch (error) {
+                console.error("サーバーレス関数呼び出しエラー:", error);
+                return `KP: システムエラーが発生しました。サーバー（Gemini）との通信に失敗しました。`;
+            }
+        }
+
+        // ログ表示の更新関数
+        function updateLog(speaker, message) {
+            const messageDiv = document.createElement('div');
+            
+            if (speaker === 'System') {
+                messageDiv.classList.add('state-message');
+                messageDiv.textContent = message;
+            } else {
+                messageDiv.classList.add('message');
+                
+                let nameTag = '';
+                if (speaker === 'KP') {
+                    messageDiv.classList.add('kp-message');
+                    nameTag = '<strong>キーパーからの応答</strong>';
+                } else {
+                    messageDiv.classList.add('player-message');
+                    nameTag = '<strong>あなたの行動</strong>';
+                }
+
+                const formattedMessage = message.replace(/\n/g, '<br>');
+                messageDiv.innerHTML = `${nameTag} ${formattedMessage}`;
+            }
+
+            logDisplay.appendChild(messageDiv);
+            logDisplay.scrollTop = logDisplay.scrollHeight;
+
+            if (speaker !== 'System') { 
+                gameLog.push({ speaker: speaker, message: message, timestamp: new Date().toISOString() });
+            }
+        }
+
+        // ゲーム開始ボタンのイベントリスナー
+        startButton.addEventListener('click', () => {
+            const scenarioText = scenarioInput.value.trim();
+            if (scenarioText === '') {
+                alert('KPとして進行するためのシナリオ本文を記述してください。');
+                return;
+            }
+
+            // 必須：サーバーレスURLが設定されているかチェック
+            if (SERVERLESS_ENDPOINT.includes('YOUR_SERVERLESS_FUNCTION_URL_HERE')) {
+                alert('🚨 サーバーレス関数のURLを「SERVERLESS_ENDPOINT」定数に設定してください！');
+                return;
+            }
+
+
+            isGameStarted = true;
+            currentScenarioText = scenarioText;
+            gameLog = []; 
+            gameState = { location: 'エントランス', inventory: [] }; 
+
+            scenarioSetup.style.display = 'none';
+            gameArea.style.display = 'block';
+            logDisplay.innerHTML = ''; 
+            actionInput.focus(); 
+
+            // 最初のKPメッセージ（導入）
+            const initialKpMessage = scenarioText.split('\n').find(line => line.includes('『') && line.includes('』')) || 
+                                     "【システムメッセージ】シナリオが読み込まれました。あなたの行動を入力してください。";
+            
+            updateLog('KP', initialKpMessage.replace(/『|』/g, ''));
+            const inventoryDisplay = gameState.inventory.length > 0 ? gameState.inventory.join(', ') : 'なし';
+            updateLog('System', `【初期状態】場所: ${gameState.location}、所持品: ${inventoryDisplay}`);
+        });
+
+        // 行動フォームの送信イベントリスナー
+        actionForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); 
+            
+            if (!isGameStarted) {
+                alert('先に「ゲーム開始」ボタンを押してシナリオを読み込んでください。');
+                return;
+            }
+
+            const playerAction = actionInput.value.trim();
+            if (playerAction === '') {
+                alert('行動を入力してください。');
+                return;
+            }
+
+            updateLog('Player', playerAction);
+
+            actionInput.disabled = true; 
+            actionInput.placeholder = 'KPが考え中です...';
+
+            // サーバーレス関数を呼び出す
+            const kpResponse = await getKpResponseFromServerless(playerAction);
+
+            updateLog('KP', kpResponse);
+            
+            actionInput.value = '';
+            actionInput.disabled = false;
+            actionInput.placeholder = 'あなたの行動を入力してください（例：廊下に進む、扉を調べる）';
+            actionInput.focus();
+        });
+        
+    </script>
+</body>
+</html>
