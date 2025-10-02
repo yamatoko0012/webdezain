@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カタカナ発音付き翻訳ツール</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+
+    <header>
+        <h1>カタカナ発音付き翻訳ツール</h1>
+        <p>テキストを入力し、翻訳ボタンを押すと、翻訳結果とカタカナでの発音ガイドが表示されます。</p>
+    </header>
+
+    <main>
+        <div class="translation-container">
+            
+            <section class="input-section">
+                <h2>翻訳したいテキスト</h2>
+                <textarea id="inputText" placeholder="ここに翻訳したい文章を入力してください..."></textarea>
+                
+                <div class="controls">
+                    <select id="sourceLang">
+                        <option value="en">英語 (English)</option>
+                        <option value="ja">日本語 (Japanese)</option>
+                        <option value="fr">フランス語 (French)</option>
+                        </select>
+                    <span class="arrow">→</span>
+                    <select id="targetLang">
+                        <option value="ja">日本語 (Japanese)</option>
+                        <option value="en">英語 (English)</option>
+                        <option value="fr">フランス語 (French)</option>
+                    </select>
+
+                    <button id="translateButton">翻訳する</button>
+                    <button id="clearButton">クリア</button>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="output-section">
+                <h2>翻訳結果</h2>
+                
+                <div class="result-box translated-text-box">
+                    <p id="translatedText">翻訳結果がここに表示されます。</p>
+                </div>
+                
+                <h2>発音ガイド (カタカナ)</h2>
+                <div class="result-box pronunciation-box">
+                    <p id="pronunciationText">カタカナでの発音ガイドがここに表示されます。</p>
+                </div>
+
+                </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 カタカナ発音付き翻訳ツール | GitHubで公開中</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
