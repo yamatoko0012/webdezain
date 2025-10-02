@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>次世代型ウェブサイトビルダー プロトタイプ（ローカルストレージ対応）</title>
+    <style>
+        /* --- 全体スタイル --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8eaf6; /* 薄いラベンダー */
+            display: flex;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* --- ツールバー（プロジェクト管理・要素追加・設定） --- */
+        #toolbar {
+            width: 300px;
+            background-color: #3f51b5; /* インディゴブルー */
+            color: white;
+            padding: 20px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            flex-shrink: 0;
+            border-right: 1px solid #7986cb;
+        }
+
+        #toolbar h2 {
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tool-button, .action-button, #save-project-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .tool-button:hover, .action-button:hover, #save-project-btn:hover {
+            background-color: #7986cb;
+            transform: translateY(-1px);
+        }
+
+        /* --- プロジェクト管理エリア --- */
+        #project-list {
+            list-style: none;
+            padding: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        #project-list li {
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #project-list li:last-child {
+            border-bottom: none;
+        }
+
+        #project-list li:hover {
+            background-color: #5c6bc0;
+        }
+
+        .delete-project-btn {
+            background: #e57373;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 3px 6px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        /* --- 設定パネル（詳細編集） --- */
+        #style-panel {
+            background-color: #e8eaf6; /* パネル内は明るく */
+            color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        #style-panel label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #style-panel input[type="color"], #style-panel input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+        #style-panel input[type="color"] {
+            height: 30px;
+        }
+
+        /* --- 作業エリア（キャンバス） --- */
+        #main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        #canvas {
+            min-height: 800px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        /* --- キャンバス内の要素 --- */
+        .editable-element {
+            min-height: 40px;
+            padding: 15px;
+            border: 2px dashed transparent;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 6px;
+        }
+
+        .active-element {
+            border-color: #ffc107 !important; /* アクティブな要素はゴールド */
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+            background-color: #fffde7;
+        }
+
+        /* 2カラムコンテナのスタイル */
+        .flex-container {
+            display: flex;
+            gap: 10px;
+            min-height: 100px;
+            padding: 10px;
+            border: 2px dashed #90a4ae; /* 青みがかったグレー */
+            align-items: stretch;
+            background-color: #f5f5f5;
+        }
+
+        .flex-column {
+            flex: 1; /* 均等な幅 */
+            padding: 10px;
+            border: 1px dashed #bdbdbd;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #e57373;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 14px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+
+        .active-element .delete-btn {
+            opacity: 1;
+        }
+
+        /* --- コード出力エリア --- */
+        #output-area {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        #output-code {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 12px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+
+        #generate-btn {
+            background-color: #4caf50;
+        }
+    </style>
+</head>
+<body onload="loadProjects()">
+
+    <div id="toolbar">
+        <h2>プロジェクト管理</h2>
+        <input type="text" id="project-name" placeholder="新しいプロジェクト名" style="width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 10px; border-radius: 4px;">
+        <button class="action-button" onclick="newProject()">新規作成 / クリア</button>
+        <button id="save-project-btn" onclick="saveCurrentProject()">現在のプロジェクトを保存</button>
+        
+        <h3 style="margin-top: 20px;">保存されたプロジェクト</h3>
+        <ul id="project-list">
+            </ul>
+
+        <hr style="border-color: rgba(255, 255, 255, 0.2); margin: 20px 0;">
+
+        <h2>要素を追加</h2>
+        <button class="tool-button" onclick="addElement('heading')">
+            見出し (H1)
+        </button>
+        <button class="tool-button" onclick="addElement('paragraph')">
+            段落 (P)
+        </button>
+        <button class="tool-button" onclick="addFlexContainer(2)">
+            **レイアウト** (2カラム)
+        </button>
+
+        <hr style="border-color: rgba(255, 255, 255, 0.2); margin: 20px 0;">
+
+        <h2>詳細スタイル編集</h2>
+        <div id="style-panel">
+            <p id="style-panel-info" style="font-style: italic; color: #555;">キャンバス上の要素を選択してください。</p>
+            
+            <label for="text-color">テキスト色</label>
+            <input type="color" id="text-color" value="#333333" onchange="applyStyle('color', this.value)">
+
+            <label for="bg-color">背景色</label>
+            <input type="color" id="bg-color" value="#ffffff" onchange="applyStyle('backgroundColor', this.value)">
+            
+            <label for="font-size">フォントサイズ (px
