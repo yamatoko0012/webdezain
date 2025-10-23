@@ -4,71 +4,63 @@
 	<meta charset="UTF-8">
 	<title> WDkadai21 </title>
 	<style>
-		/* ここにCSSを記述します */
+		/*
+		 * 画像のレイアウトを再現するための最小限のCSS
+		 */
 		body {
-			font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; /* 画像のゴシック体に近いフォント */
+			/* 標準的なフォントを指定 */
+			font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
 			margin: 0;
 			padding: 0;
-			text-align: center; /* 全体を中央に寄せる（タイトルと写真） */
+			/* 全てのコンテンツ（タイトル画像と写真）を中央に配置 */
+			text-align: center; 
 		}
 
-		/* タイトル（「墓地で暮らす猫たち。」）のスタイル */
-		.title-container {
-			background-color: #f7a01d; /* 上下の帯の色（オレンジ系） */
-			padding: 0 10px; /* 帯の左右に少しパディング */
-			margin: 20px 0; /* 上下の余白 */
-			display: inline-block; /* 内容物の幅に合わせる */
-		}
-
+		/* タイトル画像（h1）のスタイル */
 		h1 {
-			font-size: 50px; /* フォントサイズ（非常に大きい） */
-			color: black;
-			margin: 0; /* 帯に密着させるため */
-			padding: 10px 0; /* テキストの上下の余白 */
-			border-top: 5px solid #f7a01d; /* 上側の帯 */
-			border-bottom: 5px solid #f7a01d; /* 下側の帯 */
-			background-color: white; /* テキスト背景色 */
-			line-height: 1.2; /* 行の高さ */
+			/* 上下の余白を調整し、元の画像に近い配置にする */
+			margin: 40px 0 20px 0; 
+			padding: 0;
 		}
 
-		/* タイトル内のテキストを囲む要素（帯とテキストの色の反転を実現） */
-		.title-text {
-			background-color: white; /* 文字背景の白 */
-			padding: 0 20px; /* 文字の左右の余白 */
-		}
-
-
-		/* 写真とキャプションのスタイル */
-		figure {
+		h1 img {
+			/* imgを中央寄せするためにdisplay: blockとmargin: autoを使用 */
 			display: block;
-			margin: 40px auto 20px auto; /* 上下左右の余白と中央配置 */
-			width: fit-content; /* 写真の幅に合わせる */
-			text-align: left; /* キャプションを左寄せに */
+			margin: 0 auto;
+			max-width: 100%;
+			height: auto;
+		}
+
+		/* 写真（figure）とキャプションのスタイル */
+		figure {
+			/* 中央配置 */
+			margin: 40px auto 20px auto;
+			/* 写真の幅に合わせて中央に配置 */
+			width: fit-content;
+			/* キャプションを写真の左端に揃える */
+			text-align: left; 
 		}
 
 		figure img {
 			display: block;
-			max-width: 100%; /* 親要素の幅を超えないように */
+			max-width: 100%;
 			height: auto;
-			/* 画像の左右に余白がないので、marginは0 */
 		}
 
 		figcaption {
-			font-size: 14px; /* キャプションのフォントサイズ */
+			/* 撮影日時と場所の文字サイズを調整 */
+			font-size: 14px; 
 			color: black;
 			margin-top: 5px;
 		}
-
 	</style>
 </head>
 <body>
 
-<div class="title-container">
-	<h1><span class="title-text">墓地で暮らす猫たち。</span></h1>
-</div>
+<h1><img src="images/title.png" alt="墓地で暮らす猫たち。"></h1>
 
 <figure>
-	<img src="cat_in_cemetery.png" alt="墓地でくつろぐ猫">
+	<img src="images/photo.jpg" alt="墓地でくつろぐ猫">
 	<figcaption> 撮影：2017年12月1日（東京台東区） </figcaption>
 </figure>
 
