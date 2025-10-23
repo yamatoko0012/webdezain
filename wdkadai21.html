@@ -4,63 +4,51 @@
 	<meta charset="UTF-8">
 	<title> WDkadai21 </title>
 	<style>
-		/*
-		 * 画像のレイアウトを再現するための最小限のCSS
-		 */
+		/* 全体の設定 */
 		body {
-			/* 標準的なフォントを指定 */
-			font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+			text-align: center; /* タイトル画像とfigureを中央に寄せる */
 			margin: 0;
 			padding: 0;
-			/* 全てのコンテンツ（タイトル画像と写真）を中央に配置 */
-			text-align: center; 
 		}
 
-		/* タイトル画像（h1）のスタイル */
+		/* タイトル画像（h1）の設定 */
 		h1 {
-			/* 上下の余白を調整し、元の画像に近い配置にする */
-			margin: 40px 0 20px 0; 
-			padding: 0;
+			/* 画像の上下に適切な余白を追加 */
+			margin: 30px 0 40px 0; 
+			display: block;
+			/* h1タグ自体が持つ既定の余白をリセットする場合はmargin: 0;を検討 */
 		}
-
+		
 		h1 img {
-			/* imgを中央寄せするためにdisplay: blockとmargin: autoを使用 */
-			display: block;
-			margin: 0 auto;
+			/* タイトル画像が画面幅を超えないようにする */
 			max-width: 100%;
 			height: auto;
 		}
 
-		/* 写真（figure）とキャプションのスタイル */
+		/* 写真とキャプションのまとまり（figure）の設定 */
 		figure {
-			/* 中央配置 */
+			/* figure全体を中央に配置し、写真の幅に合わせる */
 			margin: 40px auto 20px auto;
-			/* 写真の幅に合わせて中央に配置 */
 			width: fit-content;
-			/* キャプションを写真の左端に揃える */
-			text-align: left; 
+			/* キャプションを左寄せにする */
+			text-align: left;
 		}
 
-		figure img {
-			display: block;
-			max-width: 100%;
-			height: auto;
-		}
-
+		/* キャプション（figcaption）の設定 */
 		figcaption {
-			/* 撮影日時と場所の文字サイズを調整 */
-			font-size: 14px; 
+			font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; /* 画像のゴシック体に近いフォント */
+			font-size: 14px; /* フォントサイズ */
 			color: black;
-			margin-top: 5px;
+			margin-top: 5px; /* 写真との間隔 */
 		}
 	</style>
 </head>
 <body>
 
-<h1><img src="images/title.png" alt="墓地で暮らす猫たち。"></h1>
+<h1><img src="images2/title.png" alt="墓地で暮らす猫たち。"></h1>
 
 <figure>
-	<img src="images/photo.jpg" alt="墓地でくつろぐ猫">
+	<img src="images2/photo.jpg" alt="墓地でくつろぐ猫">
 	<figcaption> 撮影：2017年12月1日（東京台東区） </figcaption>
 </figure>
 
