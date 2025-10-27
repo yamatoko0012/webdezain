@@ -10,22 +10,23 @@
         /* 1. 基本設定とリセット */
         /* -------------------------------------- */
         body {
+            /* 見本画像に合わせ、フォントは汎用性の高いゴシック系 */
             font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #fff;
+            color: #333; /* 文字色 */
+            background-color: #fff; /* 背景色 */
             margin: 0;
             padding: 20px;
-            display: flex;
+            display: flex; /* コンテンツを中央に寄せるためのFlexbox設定 */
             justify-content: center;
         }
 
         /* -------------------------------------- */
-        /* 2. 全体コンテナ */
+        /* 2. 全体コンテナ (幅の制御) */
         /* -------------------------------------- */
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; /* 見本画像に近い、読みやすい適度な幅 */
             padding: 20px;
             box-sizing: border-box;
         }
@@ -35,7 +36,7 @@
         /* -------------------------------------- */
         .section-header {
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* 下のH2との間に適切な余白 */
         }
 
         .section-header h1 {
@@ -47,7 +48,7 @@
 
         .section-header p {
             font-size: 16px;
-            color: #666;
+            color: #666; /* H1より薄い色で階層を分ける */
             margin-top: 0;
             margin-bottom: 0;
         }
@@ -70,43 +71,39 @@
         }
         
         /* -------------------------------------- */
-        /* 5. ルビ表示の強力な保証と調整 (上側表示を確実にするための修正) */
+        /* 5. ルビの正確な上側表示 (ご要望の再現) */
         /* -------------------------------------- */
-
-        /* ruby要素自体がFlexコンテナになるようにする */
+        /* ルビとその親文字を囲む要素 */
         ruby {
-            display: inline-flex; /* インライン要素として扱いながらFlexboxの機能を持たせる */
-            flex-direction: column; /* これが重要！ルビと親文字を縦に並べる */
-            align-items: center;   /* ルビと親文字を中央揃えにする */
-            white-space: nowrap;   /* ルビを含む部分で改行されないようにする */
-            line-height: 1;        /* 行の高さを最小限に抑え、ルビの配置を安定させる */
-            /* vertical-align: baseline; */ /* 不要な場合はコメントアウト */
+            display: inline-flex;  /* Flexコンテナとして動作させる */
+            flex-direction: column;/* 縦積み（ルビと親文字）を強制 */
+            align-items: center;   /* 中央揃え */
+            white-space: nowrap;   /* ルビ部分での改行を防止 */
+            line-height: 1;        /* 行の高さへの影響を最小限に */
         }
 
         /* ルビ（ふりがな）部分の調整 */
         rt {
             font-size: 0.5em;      /* 親文字の半分のサイズ */
-            text-align: center;    /* ルビ文字自体を中央揃え */
-            display: block;        /* ブロック要素として、親文字とは別の行（Flexアイテムの列）に配置 */
-            line-height: 1;        /* ルビ自身の行高さを制御 */
-            margin-top: -0.1em;    /* 親文字との間隔を微調整（上側に詰める） */
-            order: -1;             /* これが重要！Flexアイテムの表示順序を変更し、ルビを親文字より上にする */
-            /* HTMLでは多良間島<rt>たらまじま</rt>の順ですが、
-               CSSのorderプロパティでrtを-1にすることで、親文字（order:0）より先に表示されます。 */
+            text-align: center;
+            display: block;        /* ブロックとして扱い、Flexboxで制御 */
+            line-height: 1;
+            margin-top: -0.1em;    /* 親文字との間隔を詰める */
+            order: -1;             /* **これが核心！** 親文字(order:0)より先に表示し、上側に配置 */
         }
 
         /* -------------------------------------- */
         /* 6. 画像設定 */
         /* -------------------------------------- */
         .item-image-wrapper {
-            margin-top: 25px;
-            /* 画像を左揃えに */
+            margin-top: 25px; /* テキストと画像の間隔 */
+            text-align: left;
         }
 
         .item-image {
             max-width: 100%; /* レスポンシブ対応：親要素の幅に合わせて縮小 */
-            height: auto;    /* 縦横比を維持 */
-            display: block;  /* インライン要素による予期せぬ下側のスペースを削除 */
+            height: auto;
+            display: block;
         }
     </style>
 </head>
@@ -114,26 +111,8 @@
     <div class="container">
         <header class="section-header">
             <h1>ピックアップスイーツ</h1>
-            <p>今月の厳選スイーツをご紹介します。</p>
+            <p>今月の厳選スイーツを紹介します。</p>
         </header>
 
         <section class="item-detail">
-            <h2 class="item-title">黒糖のマカロン</h2>
-            
-            <div class="item-description">
-                <p>
-                    当店のマカロンの素材は厳選した素材を使用しています。
-                </p>
-                <p>
-                    黒糖のマカロンは沖縄の<ruby class="ruby-text">多良間島<rt>たらまじま</rt></ruby>の黒糖で作っています。
-                </p>
-                </div>
-
-            <div class="item-image-wrapper">
-                <img src="images2/bmacron.jpg" alt="沖縄多良間島産の黒糖を使用したマカロンの画像" class="item-image">
-            </div>
-        </section>
-
-    </div>
-</body>
-</html>
+            <h2 class="
