@@ -3,33 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ピックアップスイーツ</title>
-    <link rel="stylesheet" href="styles.css">
-    </head>
-<body>
-    <div class="container">
-        <header class="section-header">
-            <h1>ピックアップスイーツ</h1>
-            <p>今月の厳選スイーツをご紹介します。</p>
-        </header>
+    <title>ピックアップスイーツ - 黒糖のマカロン</title>
+    
+    <style>
+        /* -------------------------------------- */
+        /* 1. 基本設定とリセット */
+        /* -------------------------------------- */
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; /* 日本語フォント設定 */
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-        <section class="item-detail">
-            <h2 class="item-title">黒糖のマカロン</h2>
-            
-            <div class="item-description">
-                <p>
-                    当店のマカロンの素材は厳選した素材を使用しています。
-                </p>
-                <p>
-                    黒糖のマカロンは沖縄の<span class="ruby-text">多良間島<rt>たらまじま</rt></span>の黒糖で作っています。
-                </p>
-                </div>
+        /* -------------------------------------- */
+        /* 2. 全体コンテナ */
+        /* -------------------------------------- */
+        .container {
+            width: 100%;
+            max-width: 600px; /* コンテンツの最大幅 */
+            padding: 20px;
+            box-sizing: border-box;
+            border-top: 1px solid transparent; /* マージンの相殺防止用 */
+        }
 
-            <div class="item-image-wrapper">
-                <img src="images2/bmacron.jpg" alt="黒糖のマカロンの画像" class="item-image">
-            </div>
-        </section>
+        /* -------------------------------------- */
+        /* 3. セクションヘッダー (ピックアップスイーツ) */
+        /* -------------------------------------- */
+        .section-header {
+            text-align: left;
+            margin-bottom: 30px;
+            padding-bottom: 5px; /* 下の説明文との間隔調整 */
+        }
 
-    </div>
-</body>
-</html>
+        .section-header h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #666;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        /* -------------------------------------- */
+        /* 4. スイーツ紹介セクション */
+        /* -------------------------------------- */
+        .item-detail {
+            /* 特に装飾なし。構造的なコンテナとして利用 */
+        }
+
+        .item-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            /* 見本画像では、h1よりも少し軽めの視覚的重み */
+        }
+
+        /* 商品の説明文 */
+        .item-description p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.7; /* 説明文は特にゆったりと */
+        }
