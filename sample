@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>お勧めスイーツ</title>
+</head>
+<body>
+    <h1>ピックアップスイーツ</h1>
+    <p>今月のお勧めスイーツを3つご紹介します。</p>
+    <a href="sample26_1.html">苺のショートケーキ</a>
+</body>
+</html>
