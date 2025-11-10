@@ -1,49 +1,152 @@
 <!DOCTYPE html>
 <html lang="ja">
-　　<head>
+<head>
     <meta charset="UTF-8">
-  sample27.html
-      <title>マテリアルスイーツ</titl>                      
-   </head>
-   <body>
-      <header>
-          <h1>マテリアルスイーツ</h1>
-          <p>素材にこだわった多種のフルーツを使用したスイーツの専門誌です。</p>
-        
-        <nav>
-            <ul>
-                <li><a href="#about">会社案内</a></li>
-                <li><a href="#menu">今月のメニュー</a></li>
-                <li><a href="#contact">お問い合わせ</a></li>
-            </ul>
-        </nav>
-    </header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 ページ内リンク - スイーツ紹介</title>
+    <style>
+        /* 教科書の図のイメージに近づけるための簡易なCSS */
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #ffe0b2; /* 淡いオレンジ */
+            padding: 20px 40px;
+            border-bottom: 2px solid #ffcc80;
+        }
+        header h1 {
+            margin: 0;
+            color: #d84315; /* 濃いオレンジ */
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #d84315;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #ffcc80;
+        }
+        main {
+            padding: 40px;
+        }
+        .article {
+            background-color: #fff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .article h2 {
+            border-left: 5px solid #ff9800;
+            padding-left: 10px;
+            color: #ff9800;
+        }
+        .article section {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px dashed #ccc;
+        }
+        .article section h3 {
+            color: #e65100; /* さらに濃いオレンジ */
+        }
+        .item-detail {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .item-detail p {
+            flex: 1;
+            line-height: 1.6;
+        }
+        .item-detail img {
+            width: 200px; /* 教科書の図に合わせたサイズ感 */
+            height: auto;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
 
-    <main>
-        <article>
-            <h2>今月のモンブラン・手芸風スイーツ特集</h2>
-            
-            <section>
-                <h3>ピックアップスイーツ</h3>
-                <p>今月の動画で紹介したモンブランです。</p>
-                <p>今月採れた最高の栗を使用して作りました。</p>
-                <p><img src="images/blanc1.jpg" alt="モンブランの写真"></p>
-                <p>沖縄産の砂糖を使用したマカロンです。</p>
-                <p><img src="images/macron1.jpg" alt="マカロンの写真"></p>
-                
-                <small>2025/08/01公開</small>
-            </section>
-            
-            <section>
-                <h3>その他の人気スイーツ</h3>
-                <p>季節を問わず人気の定番のショートケーキをご紹介します。</p>
-                </section>
-        </article>
-        
-        </main>
+<header>
+    <h1>極上のスイーツ特集</h1>
+    <nav>
+        <ul>
+            <li><a href="#montblanc">モンブランのご紹介</a></li>
+            <li><a href="#macaron">マカロンのご紹介</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <footer>
-        <small>© 2025 Material Sweets. All Rights Reserved.</small>
-    </footer>
+<main>
+    <article class="article">
+        <h2>今月のおすすめスイーツをご紹介します。</h2>
+
+        <section id="montblanc">
+            <h3>モンブラン</h3>
+            <div class="item-detail">
+                <p>
+                    <img src="images/montblanc.jpg" alt="金色のモンブラン" />
+                    秋の味覚の王様、モンブラン。栗の風味を最大限に引き出した、濃厚でなめらかなクリームが特徴です。
+                    土台のサクサクとしたメレンゲとの食感のコントラストも絶妙。
+                    素材の良さを活かした、深い味わいをお楽しみください。
+                </p>
+            </div>
+        </section>
+
+        <section id="macaron">
+            <h3>マカロン</h3>
+            <div class="item-detail">
+                <p>
+                    <img src="images/macaron.jpg" alt="カラフルなマカロンの写真" />
+                    色鮮やかで可愛らしい見た目が特徴のマカロン。
+                    サクッとした食感の後に続く、しっとりとした内側の生地と、風味豊かなクリームのハーモニーがたまりません。
+                    定番のフランボワーズ、ピスタチオに加え、季節限定のフレーバーもご用意しております。贈り物にも最適です。
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>その他の人気アイテム</h2>
+            <p>
+                当店のWebページでは、他にも季節のフルーツタルトや、職人が一つ一つ手作りしたチョコレートなど、
+                多数の魅力的なスイーツをご紹介しています。ぜひ他のページもご覧ください。
+                特に、フレッシュな苺を使ったショートケーキは、老若男女問わず大人気です。
+            </p>
+            <p>
+                Webページのコンテンツが長くなり、ユーザーがスムーズに情報にアクセスできるように、
+                ページ内リンクは非常に重要な役割を果たします。特にFAQページや目次の長いドキュメントなどで効果的です。
+            </p>
+        </section>
+
+        <section style="text-align: right; margin-top: 50px;">
+            <p><a href="#">👆 ページトップに戻る</a></p>
+        </section>
+
+    </article>
+</main>
+
+<footer>
+    <p style="text-align: center; padding: 20px; background-color: #ccc; margin-top: 0;">&copy; 2025 スイーツ紹介Webページ</p>
+</footer>
+
 </body>
 </html>
