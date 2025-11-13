@@ -4,82 +4,89 @@
     <meta charset="UTF-8">
     <title>マテリアルスイーツ</title>
     <style>
-        /*
-         * 1. body要素の背景にグラデーションを設定
-         * 右から左へ、金色っぽい色（#F0E68C - Khaki）から白（#FFFFFF）に変化
-         */
+        /* 全体の背景色を設定 */
         body {
-            /* グラデーション: to right は左から右への変化なので、ここでは to left で右から左への変化を指定 */
-            background-image: linear-gradient(to left, #F0E68C, #FFFFFF);
-            /* グラデーションが指定されているので、単色のbackground-colorは削除またはコメントアウト */
-            /* background-color: ivory; */
-            /* 全体のフォントを設定（任意） */
-            font-family: "Hiragino Kaku Gothic Pro", "メイリオ", sans-serif;
-            margin: 0; /* bodyのデフォルトマージンをリセット */
-            padding: 0;
+            background-color: ivory; /* 画像のように薄い黄色（アイボリー）の背景 */
+            font-family: sans-serif; /* 見やすいフォントを設定 */
+            margin: 0; /* bodyのデフォルトのマージンをリセット */
+            padding: 20px; /* ページ全体の余白 */
+        }
+        
+        /* ページ全体を囲むコンテナ */
+        .container {
+            /* 画像のコンテンツ部分の背景色を設定（画像では薄い茶色のような色） */
+            background-color: #f7f3e8; /* アイボリーより少し濃い色 */
+            max-width: 800px; /* ページの最大幅を設定 */
+            margin: 0 auto; /* ページを中央寄せにする */
+            padding: 30px; /* コンテナ内の余白 */
+            /* 画像で見られるような枠線のぼかしを再現したい場合は、
+               box-shadowやborderプロパティを追加できますが、
+               今回はシンプルにコンテンツ部分のみ再現します。 */
+        }
+        
+        /* メインタイトル */
+        h1 {
+            font-size: 24px;
+            /* 画像では薄い黄色の帯状になっていますが、
+               今回はテキストとその下の線で表現します。
+               帯状にしたい場合は、その部分を<div>で囲んで背景色を設定します。
+               ここでは見出しのスタイルを設定します。 */
+            border-bottom: 2px solid #ccc; /* 下線を追加 */
+            padding-bottom: 5px; /* 下線との間隔 */
+        }
+        
+        /* セクションタイトル（ピックアップスイーツなど） */
+        h2 {
+            font-size: 20px;
+            color: #333; /* 文字の色 */
+            margin-top: 20px;
+        }
+        
+        /* 説明文（pタグ） */
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* 画像とその周辺のレイアウト */
+        .item-detail {
+            display: flex; /* 画像とテキストを横並びにするためにFlexboxを使用 */
+            align-items: flex-start; /* 上端を揃える */
+            margin-top: 15px;
         }
 
-        /*
-         * 2. ヘッダーのデザインを右側の完成例のように修正
-         */
-        #header {
-            background-color: #A0522D; /* 茶色系 */
-            color: white; /* 文字色を白に */
-            padding: 20px; /* 内側の余白 */
-            border-bottom: 5px solid #8B4513; /* 濃い茶色の下線 */
-            text-align: center; /* タイトルを中央寄せ（任意） */
+        /* 画像の設定 */
+        .montblanc-image {
+            width: 200px; /* 画像の幅を調整 */
+            height: auto; /* 高さは自動で調整して縦横比を維持 */
+            margin-right: 20px; /* 画像の右側に余白 */
+            /* 画像のように若干影をつけたい場合は、box-shadowを追加 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
         }
 
-        #header h1 {
-            margin-top: 0; /* h1のデフォルトマージン調整 */
+        /* 画像の説明文 */
+        .item-description {
+            /* 特にスタイルは不要ですが、構造のために残します */
+            flex-grow: 1; /* 残りのスペースを埋める */
         }
 
-        #header p {
-            margin-bottom: 0; /* pのデフォルトマージン調整 */
-        }
+        /* 画像の周囲の黄色いぼかし部分を再現するCSSの例（より高度なテクニック） */
+        /* 画像では、コンテンツ全体が淡い黄色と薄い茶色の中間のような色で、
+           その上から薄い黄色のオーバーレイがかかっているように見えます。
+           これは背景画像や複数のレイヤー、または画像自体の加工である可能性が高いですが、
+           シンプルに背景色と枠線でコンテンツの領域を表現しました。
+           もし、より忠実に再現したい場合は、コンテンツ全体を囲む<div>に
+           background-imageやopacityを設定する必要があります。
+        */
 
-        /*
-         * 3. コンテンツ部分のデザインを右側の完成例のように修正
-         */
-        #contents {
-            padding: 10px 20px; /* コンテンツ全体の内側余白 */
-        }
-
-        #contents h2 {
-            background-color: #FFDAB9; /* 薄いオレンジ系 */
-            color: #8B4513; /* 濃い茶色系の文字色 */
-            padding: 5px 10px;
-            border-left: 5px solid #FF8C00; /* 左側に太いオレンジの線 */
-            border-bottom: 1px solid #FF8C00; /* 細いオレンジの下線 */
-        }
-
-        #contents h3 {
-            background-color: #FFFACD; /* レモンイエロー系 */
-            color: #8B4513; /* 濃い茶色系の文字色 */
-            padding: 3px 10px;
-            border-bottom: 1px dashed #DAA520; /* 点線のボーダー */
-        }
-
-        #contents img {
-            max-width: 100%; /* 画像が親要素からはみ出さないように調整 */
-            height: auto;
-            display: block; /* 画像の下の余白を消す */
-            margin: 10px auto; /* 中央寄せと上下の余白 */
-            border: 1px solid #ccc; /* 画像に細い枠線（任意） */
-        }
     </style>
 </head>
 <body>
-    <div id="header">
+
+    <div class="container">
+        
         <h1>マテリアルスイーツ</h1>
-        <p>季節のフルーツを使用した生菓子のお店です。</p>
-    </div>
-    <div id="contents">
-        <h2>ピックアップスイーツ</h2>
-        <p>今月のお勧めスイーツを紹介します。</p>
-        <h3>モンブラン</h3>
-        <p>今年採れた国内産の栗を使用したケーキです。</p>
-        <img src="images/blanc1.jpg" alt="モンブランの写真">
-    </div>
-</body>
-</html>
+        <p>季節のフルーツを使用した生菓子のお姫様です。</p>
+
+        <h2 id="pickup-sweets">ピックアップスイーツ</h2>
