@@ -1,65 +1,72 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>マテリアルスイーツ</title>
     <style>
-      /* 全体の背景と基本設定 */
-      body {
-        background-color: #fffaf0; /* 背景色を少し黄色みがかった白に設定 */
-        margin: 0; /* bodyのデフォルトマージンをリセット */
-        font-family: sans-serif; /* 見やすいフォントに設定 */
-      }
+        /*
+         * 1. body要素の背景にグラデーションを設定
+         * 右から左へ、金色っぽい色（#F0E68C - Khaki）から白（#FFFFFF）に変化
+         */
+        body {
+            /* グラデーション: to right は左から右への変化なので、ここでは to left で右から左への変化を指定 */
+            background-image: linear-gradient(to left, #F0E68C, #FFFFFF);
+            /* グラデーションが指定されているので、単色のbackground-colorは削除またはコメントアウト */
+            /* background-color: ivory; */
+            /* 全体のフォントを設定（任意） */
+            font-family: "Hiragino Kaku Gothic Pro", "メイリオ", sans-serif;
+            margin: 0; /* bodyのデフォルトマージンをリセット */
+            padding: 0;
+        }
 
-      /* ヘッダーの装飾 */
-      #header {
-        background-color: #7b4a2c; /* 濃い茶色の背景色 */
-        color: white; /* 文字色を白に */
-        padding: 20px; /* 内側の余白 */
-        border-bottom: 5px solid #a87e5b; /* 下部に太いボーダー（茶色）を追加 */
-      }
+        /*
+         * 2. ヘッダーのデザインを右側の完成例のように修正
+         */
+        #header {
+            background-color: #A0522D; /* 茶色系 */
+            color: white; /* 文字色を白に */
+            padding: 20px; /* 内側の余白 */
+            border-bottom: 5px solid #8B4513; /* 濃い茶色の下線 */
+            text-align: center; /* タイトルを中央寄せ（任意） */
+        }
 
-      #header h1 {
-        font-size: 2em; /* タイトルの文字サイズ */
-        margin-top: 0; /* h1の上側のマージンをリセット */
-        margin-bottom: 5px; /* h1の下側のマージン */
-      }
-      
-      #header p {
-          margin-bottom: 0; /* pの下側のマージンをリセット */
-      }
+        #header h1 {
+            margin-top: 0; /* h1のデフォルトマージン調整 */
+        }
 
-      /* コンテンツ全体 */
-      #contents {
-        padding: 20px; /* 全体に余白を設定 */
-      }
-      
-      /* h2の見出しの装飾 */
-      #contents h2 {
-        background-color: #d88151; /* オレンジがかった背景色 */
-        color: white; /* 文字色を白に */
-        padding: 10px 15px; /* 内側の余白（上下・左右） */
-        margin-top: 30px; /* 上側の余白 */
-        margin-bottom: 15px; /* 下側の余白 */
-      }
+        #header p {
+            margin-bottom: 0; /* pのデフォルトマージン調整 */
+        }
 
-      /* h3の小見出しの装飾 */
-      #contents h3 {
-        background-color: #f7e6c4; /* 薄い黄色/クリーム色の背景色 */
-        padding: 8px 15px; /* 内側の余白（上下・左右） */
-        border-left: 5px solid #d88151; /* 左側に区切り線を追加（お好みで） */
-        margin-top: 25px; /* 上側の余白 */
-        margin-bottom: 10px; /* 下側の余白 */
-      }
+        /*
+         * 3. コンテンツ部分のデザインを右側の完成例のように修正
+         */
+        #contents {
+            padding: 10px 20px; /* コンテンツ全体の内側余白 */
+        }
 
-      /* 画像のスタイル（必要に応じて） */
-      #contents img {
-        max-width: 100%; /* 親要素の幅を超えないように調整 */
-        height: auto;
-        display: block; /* 中央寄せなどの調整をしやすくする */
-        margin-top: 15px;
-      }
-      
+        #contents h2 {
+            background-color: #FFDAB9; /* 薄いオレンジ系 */
+            color: #8B4513; /* 濃い茶色系の文字色 */
+            padding: 5px 10px;
+            border-left: 5px solid #FF8C00; /* 左側に太いオレンジの線 */
+            border-bottom: 1px solid #FF8C00; /* 細いオレンジの下線 */
+        }
+
+        #contents h3 {
+            background-color: #FFFACD; /* レモンイエロー系 */
+            color: #8B4513; /* 濃い茶色系の文字色 */
+            padding: 3px 10px;
+            border-bottom: 1px dashed #DAA520; /* 点線のボーダー */
+        }
+
+        #contents img {
+            max-width: 100%; /* 画像が親要素からはみ出さないように調整 */
+            height: auto;
+            display: block; /* 画像の下の余白を消す */
+            margin: 10px auto; /* 中央寄せと上下の余白 */
+            border: 1px solid #ccc; /* 画像に細い枠線（任意） */
+        }
     </style>
 </head>
 <body>
