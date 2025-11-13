@@ -1,22 +1,93 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
     <title>マテリアルスイーツ</title>
     <style>
-        body{background-color:ivory;}
+      /* ページの全体設定 */
+      body {
+        /* 元の背景色は薄いベージュ系に見えます */
+        background-color: #f7f3e8; /* 少し黄色みがかった白（アイボリーよりも落ち着いた色） */
+        color: #333333; /* 基本の文字色（濃い灰色） */
+        font-family: sans-serif; /* 見やすいフォントを設定 */
+      }
+
+      /* ヘッダー部分のスタイリング */
+      #header {
+        background-color: #8c5d40; /* 濃いめの茶色 */
+        color: #ffffff; /* 白い文字色 */
+        padding: 10px; /* 内側の余白 */
+        text-align: center; /* テキストを中央寄せ */
+      }
+      
+      /* ヘッダー内のh1のスタイリング */
+      #header h1 {
+        margin: 0; /* h1の上下マージンをリセット */
+        font-size: 24px; /* フォントサイズ調整 */
+      }
+
+      /* メインコンテンツ部分のスタイリング */
+      #contents {
+        padding: 20px; /* 内側の余白 */
+      }
+      
+      /* ピックアップスイーツ (h2とp) の背景と文字色 */
+      /* h2とその次のpを囲むように背景を設定 */
+      #contents h2 {
+        background-color: #d1b899; /* やや薄めの茶色 */
+        color: #333333; /* 濃い文字色 */
+        padding: 5px 10px;
+        margin-top: 20px;
+        margin-bottom: 0;
+      }
+
+      #contents > p:nth-of-type(2) { /* 「今月のお勧めスイーツを紹介します。」のpタグ */
+        background-color: #ebdcb9; /* h2よりもさらに薄い茶色 */
+        color: #333333;
+        padding: 5px 10px;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      
+      /* モンブラン (h3とp) の背景と文字色 */
+      /* h3とその次のpを囲むように背景を設定 */
+      #contents h3 {
+        background-color: #d1b899; /* h2と同じ色 (画像では少し異なるかも) */
+        color: #333333;
+        padding: 5px 10px;
+        margin-top: 20px;
+        margin-bottom: 0;
+      }
+      
+      #contents > p:nth-of-type(3) { /* 「今年採れた国内産の栗を使用したケーキです。」のpタグ */
+        background-color: #ebdcb9; /* 上のpと同じ色 (画像ではh3と同じ色に見える) */
+        color: #333333;
+        padding: 5px 10px;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      /* 画像のスタイル調整 */
+      #contents img {
+        max-width: 100%; /* 画像がコンテンツ幅を超えないように */
+        height: auto;
+        display: block; /* 中央寄せしやすいようにブロック要素化 */
+        margin: 20px auto; /* 上下に余白、左右中央寄せ */
+      }
+      
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="header">
-        <h1>マテリアルスイーツ</h1>
-        <p>季節のフルーツを使用した生菓子のお店です。</p>
+      <h1>マテリアルスイーツ</h1>
+      <p>季節のフルーツを使用した生菓子のお店です。</p>
     </div>
     <div id="contents">
-        <h2>ピックアップスイーツ</h2>
-        <p>今月のお勧めスイーツを紹介します。</p>
-        <h3>モンブラン</h3>
-        <p>今年採れた国内産の栗を使用したケーキです。</p>
-        <img src="images/blanc1.jpg" alt="モンブランの写真">
+      <h2>ピックアップスイーツ</h2>
+      <p>今月のお勧めスイーツを紹介します。</p>
+      <h3>モンブラン</h3>
+      <p>今年採れた国内産の栗を使用したケーキです。</p>
+      <img src="images/blanc1.jpg" alt="モンブランの写真">
     </div>
-</body>
+  </body>
+</html>
