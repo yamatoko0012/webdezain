@@ -10,7 +10,6 @@ body{
     background-color:ivory;
     background-image:url(images/gold_back.jpg);
     background-repeat:repeat-y;
-    /* フローティング要素を収容するため、幅を固定/制限し中央寄せ */
     width: 640px; 
     margin: 0 auto;
 }
@@ -49,12 +48,13 @@ nav{
     background-color:burlywood;
     width: 600px;
     margin: 0 20px;
+    padding-top:5px;
+    padding-bottom:5px;
+    overflow:hidden; 
 }
 nav ul{
     padding:5px;
     list-style-type:none;
-    display: flex;
-    justify-content: space-around;
 }
 
 nav li{
@@ -67,6 +67,7 @@ nav li{
     background-color:bisque;
     text-align: center;
     box-sizing: border-box;
+    float:left; 
 }
 nav li a {
     text-decoration: none;
@@ -77,16 +78,13 @@ nav li a {
 
 /* メインコンテンツ css */
 main{
-    /* 画像の指示通り clear:both; を追加 (既に含まれていましたが、位置を調整) */
     clear:both; 
     width:620px;
-    
-    /* 以前のコードから残りのプロパティを継続 */
-    overflow:hidden; 
     padding-top:10px;
     padding-bottom:10px;
     padding-left:20px;
     background-color:antiquewhite;
+    overflow:hidden; 
     box-sizing: border-box;
 }
 h2{
@@ -100,10 +98,10 @@ h2{
     width:270px;
     padding:10px;
     margin-top:20px;
-    margin-left:20px; 
-    margin-right:20px; 
+    margin-right:20px;
     float:left;
     background-color:burlywood;
+    margin-left:20px;
     box-sizing: border-box;
 }
 
@@ -123,10 +121,12 @@ h2{
 
 /* フッター css */
 footer{
+    /* 画像の指示を完全に反映 */
+    clear:both; /* メインコンテンツのフロートを解除 */
     width: 600px;
     padding:20px;
     background-color:bisque;
-    text-align: center;
+    text-align: right; /* 画像の指示通り、テキストを右寄せ */
     box-sizing: border-box;
     margin: 0 20px;
 }
