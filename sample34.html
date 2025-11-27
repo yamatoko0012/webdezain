@@ -24,14 +24,14 @@ h1,h2,h3,ul,li,p{
 header{
     width:640px;
     background-color:bisque;
-    padding-bottom: 20px; /* ナビゲーションとの間に余白 */
+    padding-bottom: 20px;
     box-sizing: border-box;
 }
 h1{
     margin-left:20px;
     font-size:32px;
     color:crimson;
-    padding-top: 20px; /* 上部に余白 */
+    padding-top: 20px;
 }
 header p{
     margin-left:20px;
@@ -41,19 +41,19 @@ header img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 10px 20px; /* 画像の左右に余白 */
+    margin: 10px 20px;
 }
 
 /* ナビゲーション css */
 nav{
     background-color:burlywood;
-    width: 600px; /* ヘッダーの幅からマージンを引いた幅 */
-    margin: 0 20px; /* 左右に余白 */
+    width: 600px;
+    margin: 0 20px;
 }
 nav ul{
     padding:5px;
     list-style-type:none;
-    display: flex; /* ナビゲーションリストを横並びにする */
+    display: flex;
     justify-content: space-around;
 }
 
@@ -77,7 +77,6 @@ nav li a {
 
 /* メインコンテンツ css */
 main{
-    /* 新規追加: float解除と子要素のfloatの包含 */
     clear:both; 
     overflow:hidden; 
     
@@ -94,13 +93,13 @@ h2{
     margin-bottom: 10px;
 }
 
-/* 新規追加: .sweets クラスの定義 */
+/* .sweets クラスの定義 */
 .sweets{
     width:270px;
     padding:10px;
     margin-top:20px;
-    margin-left:20px; /* mainのpadding-left:20pxと合わせて合計40px */
-    margin-right:20px; /* 要素間の隙間 */
+    margin-left:20px; 
+    margin-right:20px; 
     float:left;
     background-color:burlywood;
     box-sizing: border-box;
@@ -122,12 +121,12 @@ h2{
 
 /* フッター css */
 footer{
-    width: 600px; /* mainの幅(620px)に合わせて調整 */
+    width: 600px;
     padding:20px;
     background-color:bisque;
     text-align: center;
     box-sizing: border-box;
-    margin: 0 20px; /* body幅640pxの中央に配置 */
+    margin: 0 20px;
 }
 </style>
 </head>
@@ -145,19 +144,19 @@ footer{
 </header>
 <main>
     <article>
-        <h2>ピックアップスイーツ</h2>
-        <p>今月のおすすめスイーツを2つ紹介します。</p>
+        <h2>今月のお勧めスイーツ</h2>
+        <p>今月のお勧めスイーツを紹介します。</p>
         
         <section class="sweets">
             <h3 id="blanc">モンブラン</h3>
-            <p>今月採れた国産の栗を使用したケーキです。</p>
-            <img src="images/blanc1.jpg" alt="モンブランの写真">
+            <p>今年採れた国産の栗を使用したケーキです。</p>
+            <img src="images/blanc2.jpg" alt="モンブランの写真">
         </section>
         
         <section class="sweets">
             <h3 id="macron">マカロン</h3>
             <p>沖縄産の砂糖を使用したマカロンです。</p>
-            <img src="images/macron1.jpg" alt="マカロンの写真">
+            <img src="images/macron2.jpg" alt="マカロンの写真">
         </section>
         
         <div style="clear: both;"></div> 
