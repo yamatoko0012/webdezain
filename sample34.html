@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<HTML lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>お勧めスイーツ</title>
+<style>
+/* ページ全体 css */
+body{
+    font-size:16px;
+    background-color:ivory;
+    background-image:url(images/gold_back.jpg);
+    background-repeat:repeat-y;
+    /* 新規追加: bodyの子要素を横並びにする */
+    display: flex;
+    flex-wrap: wrap; /* 必要に応じて折り返す */
+    justify-content: center; /* コンテンツを中央に寄せる（任意） */
+    align-items: flex-start; /* 上揃え */
+    min-height: 100vh; /* 画面全体の高さを確保 */
+    margin: 0; /* bodyのデフォルトマージンをリセット */
+    padding: 20px; /* 全体の余白 */
+    box-sizing: border-box; /* paddingとborderをwidthに含める */
+}
+
+/* リセット css */
+h1,h2,h3,ul,li,p{
+    margin:0;
+}
+
+/* ヘッダー css */
+header{
+    width: 100%; /* 幅を100%にして、上部に配置 */
+    max-width: 960px; /* 最大幅を設定 */
+    background-color:bisque;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center; /* ヘッダー内のテキストを中央揃え */
+    margin-bottom: 20px; /* 下に余白 */
+}
+header h1{ /* header h1 に変更 */
+    margin-left:0; /* 中央寄せのためリセット */
+    font-size:32px;
+    color:crimson;
+    margin-bottom: 10px;
+}
+header p{
+    margin-left:0; /* 中央寄せのためリセット */
+    margin-bottom: 15px;
+}
+header img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* imgをブロック要素にして中央寄せしやすくする */
+    margin: 0 auto 15px auto; /* 中央寄せ */
+}
+
+/* ナビゲーション css */
+nav{
+    background-color:burlywood;
+    width: 100%; /* ヘッダー内での幅 */
+    max-width: 960px; /* 最大幅を設定 */
+    margin: 0 auto; /* ヘッダー内で中央寄せ */
+}
+nav ul{
+    padding:5px;
+    list-style-type:none;
+    display: flex; /* ナビゲーションリストを横並びにする */
+    justify-content: space-around; /* 均等に配置 */
+    flex-wrap: wrap; /* スマホなどで折り返す */
+}
+
+nav li{
+    width: 200px; /* 各ナビゲーション項目の幅を調整 */
+    height:38px;
+    margin:5px;
+    padding:5px;
+    line-height:38px;
+    border:solid 1px brown;
+    background-color:bisque;
+    text-align: center; /* テキストを中央寄せ */
+    box-sizing: border-box; /* paddingとborderをwidthに含める */
+}
+nav li a {
+    text-decoration: none; /* 下線をなくす */
+    color: inherit; /* 親要素の色を継承 */
+    display: block; /* リンクエリア全体をクリック可能にする */
+}
+
+
+/* メインコンテンツ css */
+main{
+    width: calc(100% - 300px); /* メインコンテンツの幅を調整 (サイドバーがある場合を想定) */
+    max-width: 960px; /* 最大幅を設定 */
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    background-color:antiquewhite;
+    box-sizing: border-box;
+    margin-right: 20px; /* サイドバーとの間隔 */
+}
+
+article {
+    padding-right: 20px; /* article内の右余白 */
+}
+
+h2{
+    font-size:24px;
+    color:darkred;
+    margin-bottom: 15px;
+}
+h3{
+    font-size:20px;
+    color:brown;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+section p {
+    margin-bottom: 10px;
+}
+section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* フッター css */
+footer{
+    width: 100%; /* 幅を100%にして、下部に配置 */
+    max-width: 960px; /* 最大幅を設定 */
+    padding:20px;
+    background-color:bisque;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 20px; /* 上に余白 */
+}
+
+/* (オプション) レスポンシブ対応のメディアクエリ */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* 縦並びに戻す */
+        align-items: center; /* 中央寄せ */
+        padding: 10px;
+    }
+    header, main, footer {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    nav ul {
+        flex-direction: column; /* ナビゲーションリストも縦並び */
+        align-items: center;
+    }
+    nav li {
+        width: 90%; /* 幅を広げる */
+    }
+    main {
+        padding-left: 10px;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>マテリアルスイーツ</h1>
+    <p>伝統と素材にこだわった季節のスイーツを使用したスイーツのお店です。</p>
+    <img src="images/header.jpg" alt="金色のモンブランヘッダー画像">
+    <nav>
+        <ul>
+            <li><a href="#blanc">モンブラン</a></li>
+            <li><a href="#macron">マカロン</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <article>
+        <h2>ピックアップスイーツ</h2>
+        <p>今月のおすすめスイーツを2つ紹介します。</p>
+        <section>
+            <h3 id="blanc">モンブラン</h3>
+            <p>今月採れた国産の栗を使用したケーキです。</p>
+            <img src="images/blanc1.jpg" alt="モンブランの写真">
+        </section>
+        <section>
+            <h3 id="macron">マカロン</h3>
+            <p>沖縄産の砂糖を使用したマカロンです。</p>
+            <img src="images/macron1.jpg" alt="マカロンの写真">
+        </section>
+    </article>
+</main>
+<footer>
+    <small>&copy; 2018 Material Sweets.</small>
+</footer>
+</body>
+</html>
