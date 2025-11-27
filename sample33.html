@@ -2,154 +2,37 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>CSSボックスモデルの総合サンプル（単一ファイル）</title>
+    <title>マテリアルスイーツ</title>
     <style>
-        /* ----------------------------------------------------------------
-         * 全要素に対するリセットと基本設定
-         * ---------------------------------------------------------------- */
-        /* marginプロパティ、paddingプロパティ、box-sizingプロパティの適用 */
-        * {
-            margin: 0;
-            padding: 0;
-            /* ボックスモデルの計算方法をborder-boxに変更 */
-            box-sizing: border-box; 
+        /* ページ全体 CSS */
+        body{
+            font-size:16px;
+            background-color:ivory;
+            background-image:url(images/gold_back.jpg);
+            background-repeat:repeat-y;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4; 
-            /* line-heightプロパティの適用 */
-            line-height: 1.6; 
+        /* ヘッダー CSS */
+        header{background-color:bisque;}
+        h1{
+            font-size:32px;
+            color:crimson;
         }
 
-        main {
-            /* widthプロパティの適用 */
-            width: 800px;
-            /* marginプロパティ（中央配置）の適用 */
-            margin: 20px auto; 
-            background-color: #ffffff;
-            /* paddingプロパティの適用 */
-            padding: 20px; 
-            /* borderプロパティの適用 */
-            border: 1px solid #ddd; 
+        /* ナビゲーション CSS */
+        nav{background-color:burlywood;}
+        /* メインコンテンツ CSS */
+        main{background-color:antiquewhite;}
+        h2{
+            font-size:24px;
+            color:darkred;
+        }
+        h3{
+            font-size:20px;
+            color:brown;
         }
 
-        /* ----------------------------------------------------------------
-         * ヘッダーとナビゲーションの設定
-         * ---------------------------------------------------------------- */
-        header {
-            background-color: #333;
-            color: white;
-            /* paddingプロパティの適用 */
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        nav ul {
-            /* list-style-typeプロパティの適用 */
-            list-style-type: none;
-            background-color: #555;
-            text-align: center;
-            /* borderプロパティの適用（下線） */
-            border-bottom: 5px double #000;
-        }
-
-        nav li {
-            display: inline-block; 
-        }
-
-        nav a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            /* paddingプロパティの適用 */
-            padding: 10px 20px; 
-            /* line-heightプロパティの適用 */
-            line-height: 1.2;
-        }
-
-        /* ----------------------------------------------------------------
-         * メインコンテンツ内の要素 (ボックスモデルのフル適用)
-         * ---------------------------------------------------------------- */
-        .box-text {
-            /* widthプロパティの適用 */
-            width: 500px;
-            /* heightプロパティの適用 */
-            height: 100px; 
-            
-            background-color: #e0f7fa; 
-            
-            /* paddingプロパティ（四方すべて）の適用 */
-            padding: 30px 20px 10px 40px; 
-            
-            /* marginプロパティ（四方すべて＋中央配置）の適用 */
-            margin: 20px auto 20px auto;
-            
-            /* borderプロパティ（太さ、種類、色）の適用 */
-            border: 5px dashed brown;
-            
-            /* line-heightプロパティの適用 */
-            line-height: 1.8; 
-        }
-
-        /* ----------------------------------------------------------------
-         * リストの装飾
-         * ---------------------------------------------------------------- */
-        #list-example ul {
-            /* margin-topプロパティの適用 */
-            margin-top: 25px;
-            
-            /* list-style-typeプロパティの適用 */
-            list-style-type: square; 
-            
-            /* padding-leftプロパティの適用 */
-            padding-left: 40px; 
-        }
-
-        #list-example li {
-            /* line-heightプロパティの適用 */
-            line-height: 2.0; 
-        }
-
-        /* ----------------------------------------------------------------
-         * フッターの設定
-         * ---------------------------------------------------------------- */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            /* borderプロパティの適用（上線） */
-            border-top: 3px solid #ffcc00;
-            /* paddingプロパティの適用 */
-            padding: 15px 0;
-            /* margin-topプロパティの適用 */
-            margin-top: 30px; 
-        }
+        /* フッター CSS */
+        footer{background-color:bisque;}
     </style>
 </head>
-<body>
-    <header>
-        <h1>ボックスモデル適用サンプルサイト</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#">ホーム</a></li>
-            <li><a href="#">製品紹介</a></li>
-            <li><a href="#">会社概要</a></li>
-            <li><a href="#">お問い合わせ</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="content">
-            <h2>メインコンテンツ</h2>
-            <p class="box-text">
-                この段落は**width**と**height**でサイズを固定し、**padding**で内側の余白を、**border**で境界線を設定し、**margin**で外側の余白をとっています。文字の行間は**line-height**で調整しています。
-            </p>
-            <p>
-                さらに、この要素の周りには**margin**が適用されているため、他の要素との間に適切な間隔が生まれています。
-            </p>
-        </section>
-
-        <section
