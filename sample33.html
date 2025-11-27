@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <HTML lang="ja">
 <head>
-<mete chaeset="UTF-8">
+<meta charset="UTF-8">
 <title>お勧めスイーツ</title>
 <style>
 /* ページ全体 css */
@@ -20,7 +20,8 @@ h1,h2,h3,ul,li,p{
 /* ヘッダー css */
 header{
     width:640px;
-    background-color:bisque;}
+    background-color:bisque;
+}
 h1{
     margin-left:20px;
     font-size:32px;
@@ -35,14 +36,15 @@ nav ul{
     padding:5px;
     list-style-type:none;
 }
-</style>
+
 nav li{
     width:298px;
     height:38px;
     margin:5px;
     padding:5px;
     line-height:38px;
-    border:soild 1px brown;
+    /* 修正点: 'soild' -> 'solid' */
+    border:solid 1px brown;
     background-color:bisque;
 }
 
@@ -52,7 +54,8 @@ main{
     padding-top:10px;
     padding-bottom:10px;
     padding-left:20px;
-    background-color:antiquewhite;}
+    background-color:antiquewhite;
+}
 
 h2{
     font-size:24px;
@@ -68,12 +71,13 @@ h3{
 footer{
     width:600px;
     padding:20px;
-    background-color:bisque;}
-
+    background-color:bisque;
+}
+/* 修正点: CSSの定義が全て終わった後に </style> を記述 */
 </style>
 </head>
 <body>
- <header>
+<header>
     <h1>マテリアルスイーツ</h1>
     <p>伝統と素材にこだわった季節のスイーツを使用したスイーツのお店です。</p>
     <img src="images/header.jpg" alt="金色のモンブランヘッダー画像">
@@ -104,4 +108,4 @@ footer{
     <small>&copy; 2018 Material Sweets.</small>
 </footer>
 </body>
-</html>   
+</html>
