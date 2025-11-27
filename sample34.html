@@ -10,15 +10,9 @@ body{
     background-color:ivory;
     background-image:url(images/gold_back.jpg);
     background-repeat:repeat-y;
-    /* 新規追加: bodyの子要素を横並びにする */
-    display: flex;
-    flex-wrap: wrap; /* 必要に応じて折り返す */
-    justify-content: center; /* コンテンツを中央に寄せる（任意） */
-    align-items: flex-start; /* 上揃え */
-    min-height: 100vh; /* 画面全体の高さを確保 */
-    margin: 0; /* bodyのデフォルトマージンをリセット */
-    padding: 20px; /* 全体の余白 */
-    box-sizing: border-box; /* paddingとborderをwidthに含める */
+    /* フローティング要素を収容するため、幅を固定/制限し中央寄せ */
+    width: 640px; 
+    margin: 0 auto;
 }
 
 /* リセット css */
@@ -28,134 +22,112 @@ h1,h2,h3,ul,li,p{
 
 /* ヘッダー css */
 header{
-    width: 100%; /* 幅を100%にして、上部に配置 */
-    max-width: 960px; /* 最大幅を設定 */
+    width:640px;
     background-color:bisque;
-    padding: 20px;
+    padding-bottom: 20px; /* ナビゲーションとの間に余白 */
     box-sizing: border-box;
-    text-align: center; /* ヘッダー内のテキストを中央揃え */
-    margin-bottom: 20px; /* 下に余白 */
 }
-header h1{ /* header h1 に変更 */
-    margin-left:0; /* 中央寄せのためリセット */
+h1{
+    margin-left:20px;
     font-size:32px;
     color:crimson;
-    margin-bottom: 10px;
+    padding-top: 20px; /* 上部に余白 */
 }
 header p{
-    margin-left:0; /* 中央寄せのためリセット */
-    margin-bottom: 15px;
+    margin-left:20px;
+    margin-bottom: 10px;
 }
 header img {
     max-width: 100%;
     height: auto;
-    display: block; /* imgをブロック要素にして中央寄せしやすくする */
-    margin: 0 auto 15px auto; /* 中央寄せ */
+    display: block;
+    margin: 10px 20px; /* 画像の左右に余白 */
 }
 
 /* ナビゲーション css */
 nav{
     background-color:burlywood;
-    width: 100%; /* ヘッダー内での幅 */
-    max-width: 960px; /* 最大幅を設定 */
-    margin: 0 auto; /* ヘッダー内で中央寄せ */
+    width: 600px; /* ヘッダーの幅からマージンを引いた幅 */
+    margin: 0 20px; /* 左右に余白 */
 }
 nav ul{
     padding:5px;
     list-style-type:none;
     display: flex; /* ナビゲーションリストを横並びにする */
-    justify-content: space-around; /* 均等に配置 */
-    flex-wrap: wrap; /* スマホなどで折り返す */
+    justify-content: space-around;
 }
 
 nav li{
-    width: 200px; /* 各ナビゲーション項目の幅を調整 */
+    width: 298px;
     height:38px;
     margin:5px;
     padding:5px;
     line-height:38px;
     border:solid 1px brown;
     background-color:bisque;
-    text-align: center; /* テキストを中央寄せ */
-    box-sizing: border-box; /* paddingとborderをwidthに含める */
+    text-align: center;
+    box-sizing: border-box;
 }
 nav li a {
-    text-decoration: none; /* 下線をなくす */
-    color: inherit; /* 親要素の色を継承 */
-    display: block; /* リンクエリア全体をクリック可能にする */
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 
 /* メインコンテンツ css */
 main{
-    width: calc(100% - 300px); /* メインコンテンツの幅を調整 (サイドバーがある場合を想定) */
-    max-width: 960px; /* 最大幅を設定 */
+    /* 新規追加: float解除と子要素のfloatの包含 */
+    clear:both; 
+    overflow:hidden; 
+    
+    width:620px;
     padding-top:10px;
     padding-bottom:10px;
     padding-left:20px;
     background-color:antiquewhite;
     box-sizing: border-box;
-    margin-right: 20px; /* サイドバーとの間隔 */
 }
-
-article {
-    padding-right: 20px; /* article内の右余白 */
-}
-
 h2{
     font-size:24px;
     color:darkred;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
-h3{
+
+/* 新規追加: .sweets クラスの定義 */
+.sweets{
+    width:270px;
+    padding:10px;
+    margin-top:20px;
+    margin-left:20px; /* mainのpadding-left:20pxと合わせて合計40px */
+    margin-right:20px; /* 要素間の隙間 */
+    float:left;
+    background-color:burlywood;
+    box-sizing: border-box;
+}
+
+/* h3とimgは.sweetsの子要素として、個別に調整 */
+.sweets h3{
     font-size:20px;
     color:brown;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
-section p {
-    margin-bottom: 10px;
-}
-section img {
+.sweets img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 20px;
+    margin-top: 5px;
 }
+
 
 /* フッター css */
 footer{
-    width: 100%; /* 幅を100%にして、下部に配置 */
-    max-width: 960px; /* 最大幅を設定 */
+    width: 600px; /* mainの幅(620px)に合わせて調整 */
     padding:20px;
     background-color:bisque;
     text-align: center;
     box-sizing: border-box;
-    margin-top: 20px; /* 上に余白 */
-}
-
-/* (オプション) レスポンシブ対応のメディアクエリ */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column; /* 縦並びに戻す */
-        align-items: center; /* 中央寄せ */
-        padding: 10px;
-    }
-    header, main, footer {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    nav ul {
-        flex-direction: column; /* ナビゲーションリストも縦並び */
-        align-items: center;
-    }
-    nav li {
-        width: 90%; /* 幅を広げる */
-    }
-    main {
-        padding-left: 10px;
-    }
+    margin: 0 20px; /* body幅640pxの中央に配置 */
 }
 </style>
 </head>
@@ -175,16 +147,21 @@ footer{
     <article>
         <h2>ピックアップスイーツ</h2>
         <p>今月のおすすめスイーツを2つ紹介します。</p>
-        <section>
+        
+        <section class="sweets">
             <h3 id="blanc">モンブラン</h3>
             <p>今月採れた国産の栗を使用したケーキです。</p>
             <img src="images/blanc1.jpg" alt="モンブランの写真">
         </section>
-        <section>
+        
+        <section class="sweets">
             <h3 id="macron">マカロン</h3>
             <p>沖縄産の砂糖を使用したマカロンです。</p>
             <img src="images/macron1.jpg" alt="マカロンの写真">
         </section>
+        
+        <div style="clear: both;"></div> 
+
     </article>
 </main>
 <footer>
