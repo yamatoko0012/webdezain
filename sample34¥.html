@@ -4,27 +4,46 @@
 <meta charset="UTF-8">
 <title>お勧めスイーツ</title>
 <style>
+/* ==================================== */
 /* ページ全体 css */
-body{
-    font-size:16px;
-    background-color:ivory;
-    background-image:url(images/gold_back.jpg);
-    background-repeat:repeat-y;
-    width: 640px; 
-    margin: 0 auto;
-}
-
+/* ==================================== */
 /* リセット css */
 h1,h2,h3,ul,li,p{
     margin:0;
+    padding: 0; /* paddingもリセットしておくと安心です */
 }
 
+/* body全体の設定 */
+body{
+    font-size:16px;
+    background-color:ivory;
+    /* 背景画像はページ全体に設定し、コンテンツ領域とは独立させる */
+    background-image:url(images/gold_back.jpg);
+    background-repeat:repeat-y;
+    background-position: center top; /* 画像を中央に配置 */
+    
+    /* コンテンツの最大幅をここで定義 */
+    /* width: 640px; は削除し、コンテナ要素で幅を管理します */
+    /* margin: 0 auto; は削除します */
+}
+
+/* コンテンツ全体を囲むコンテナを作成し、幅と中央寄せを担当させます */
+.container {
+    width: 640px;
+    margin: 0 auto;
+    background-color: transparent; /* コンテナ自体には背景色をつけない */
+}
+
+
+/* ==================================== */
 /* ヘッダー css */
+/* ==================================== */
 header{
-    width:640px;
+    /* .containerと同じ幅にするため、width: 640px; は削除 */
     background-color:bisque;
     padding-bottom: 20px;
     box-sizing: border-box;
+    /* marginやwidthの指定は親要素の.containerに任せます */
 }
 h1{
     margin-left:20px;
@@ -43,49 +62,54 @@ header img {
     margin: 10px 20px;
 }
 
+/* ==================================== */
 /* ナビゲーション css */
+/* ==================================== */
 nav{
     background-color:burlywood;
-    width: 600px;
-    margin: 0 20px;
-    padding-top:5px;
-    padding-bottom:5px;
-    overflow:hidden; 
+    /* width: 600px; と margin: 0 20px; は削除。headerの幅に合わせる */
 }
 nav ul{
     padding:5px;
     list-style-type:none;
+    display: flex;
+    justify-content: space-around;
+    /* リンク全体がnavの幅を使うように内側のパディングを調整 */
+    padding: 5px 20px;
 }
 
 nav li{
-    width: 298px;
+    /* 2つの要素を均等に配置するためflex-growを使用し、widthを削除 */
+    flex-grow: 1;
     height:38px;
-    margin:5px;
-    padding:5px;
+    margin: 0 5px; /* li間のマージンを調整 */
+    padding:0; /* li自体のパディングを削除し、a要素にパディングを設定 */
     line-height:38px;
     border:solid 1px brown;
     background-color:bisque;
     text-align: center;
     box-sizing: border-box;
-    float:left; 
 }
 nav li a {
     text-decoration: none;
     color: inherit;
     display: block;
+    line-height: 38px; /* liに設定されていたline-heightをaに移動 (a要素がブロックなので) */
 }
 
 
+/* ==================================== */
 /* メインコンテンツ css */
+/* ==================================== */
 main{
-    clear:both; 
-    width:620px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:20px;
+    clear:both;  
+    overflow:hidden;  
+    
+    /* width:620px; と padding-left:20px; を削除し、padding: 10px 20px; に統一 */
+    padding:10px 20px; 
     background-color:antiquewhite;
-    overflow:hidden; 
     box-sizing: border-box;
+    /* main要素自体が640px幅になる（20px*2+600px） */
 }
 h2{
     font-size:24px;
@@ -93,16 +117,28 @@ h2{
     margin-bottom: 10px;
 }
 
+/* .sweets コンテンツを内包するラッパーを定義（任意、ここでは.sweets-listと仮定） */
+.sweets-list {
+    display: flex; /* flexboxで見栄えよく配置 */
+    justify-content: space-between; /* 左右に配置 */
+    margin-top: 10px;
+}
+
 /* .sweets クラスの定義 */
 .sweets{
-    width:270px;
+    /* mainの幅 600px (640-20*2) に対して、2つの要素を並べる */
+    /* widthを削除しflex-grow: 1; にすると、マージン次第で調整が難しくなるため、計算します */
+    /* 280px * 2 + 20px (マージン) = 580px。残りの20pxは外側にパディングがあるため、600pxの内側で調整 */
+    width: 280px; /* 600px / 2 - 10px(左右のマージン) = 290px、ここでは280pxに設定 */
     padding:10px;
-    margin-top:20px;
-    margin-right:20px;
-    float:left;
+    margin: 0; /* flexboxを使うためfloatとmargin-left/rightを削除 */
     background-color:burlywood;
-    margin-left:20px;
     box-sizing: border-box;
+}
+
+/* 2つの.sweets要素間のスペースを作る */
+.sweets + .sweets {
+    margin-left: 20px;
 }
 
 /* h3とimgは.sweetsの子要素として、個別に調整 */
@@ -119,54 +155,55 @@ h2{
 }
 
 
+/* ==================================== */
 /* フッター css */
+/* ==================================== */
 footer{
-    /* 画像の指示を完全に反映 */
-    clear:both; /* メインコンテンツのフロートを解除 */
-    width: 600px;
+    /* .containerと同じ幅にするため、width: 600px; と margin: 0 20px; を削除 */
     padding:20px;
     background-color:bisque;
-    text-align: right; /* 画像の指示通り、テキストを右寄せ */
+    text-align: center;
     box-sizing: border-box;
-    margin: 0 20px;
 }
 </style>
 </head>
 <body>
-<header>
-    <h1>マテリアルスイーツ</h1>
-    <p>伝統と素材にこだわった季節のスイーツを使用したスイーツのお店です。</p>
-    <img src="images/header.jpg" alt="金色のモンブランヘッダー画像">
-    <nav>
-        <ul>
-            <li><a href="#blanc">モンブラン</a></li>
-            <li><a href="#macron">マカロン</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <article>
-        <h2>今月のお勧めスイーツ</h2>
-        <p>今月のお勧めスイーツを紹介します。</p>
-        
-        <section class="sweets">
-            <h3 id="blanc">モンブラン</h3>
-            <p>今年採れた国産の栗を使用したケーキです。</p>
-            <img src="images/blanc2.jpg" alt="モンブランの写真">
-        </section>
-        
-        <section class="sweets">
-            <h3 id="macron">マカロン</h3>
-            <p>沖縄産の砂糖を使用したマカロンです。</p>
-            <img src="images/macron2.jpg" alt="マカロンの写真">
-        </section>
-        
-        <div style="clear: both;"></div> 
-
-    </article>
-</main>
-<footer>
-    <small>&copy; 2018 Material Sweets.</small>
-</footer>
+<div class="container">
+    <header>
+        <h1>マテリアルスイーツ</h1>
+        <p>伝統と素材にこだわった季節のスイーツを使用したスイーツのお店です。</p>
+        <img src="images/header.jpg" alt="金色のモンブランヘッダー画像">
+        <nav>
+            <ul>
+                <li><a href="#blanc">モンブラン</a></li>
+                <li><a href="#macron">マカロン</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>今月のお勧めスイーツ</h2>
+            <p>今月のお勧めスイーツを紹介します。</p>
+            
+            <div class="sweets-list">
+                <section class="sweets">
+                    <h3 id="blanc">モンブラン</h3>
+                    <p>今年採れた国産の栗を使用したケーキです。</p>
+                    <img src="images/blanc2.jpg" alt="モンブランの写真">
+                </section>
+                
+                <section class="sweets">
+                    <h3 id="macron">マカロン</h3>
+                    <p>沖縄産の砂糖を使用したマカロンです。</p>
+                    <img src="images/macron2.jpg" alt="マカロンの写真">
+                </section>
+            </div>
+            
+            </article>
+    </main>
+    <footer>
+        <small>&copy; 2018 Material Sweets.</small>
+    </footer>
+</div>
 </body>
 </html>
