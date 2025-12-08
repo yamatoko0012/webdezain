@@ -3,12 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>猫の一日 - サンプルデザイン</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>猫の一日 - 画像再現デザイン</title>
+    <style>
+        /* リセット */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; /* 画像に近いフォントを選択 */
+        }
+
+        /* ページ全体 - 背景画像の設定 */
+        body {
+            /* 画像のパスを「images」フォルダ内の「IMG_0055.jpg」として設定 */
+            background-image: url('images/IMG_0055.jpg');
+            background-size: cover; /* 画面全体に画像を拡大・縮小して表示 */
+            background-position: center center; /* 画像を中央に配置 */
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* 背景画像を固定（スクロールしても動かない） */
+        }
+
+        /* コンテンツを保持するコンテナ（画像の上部に配置） */
+        .page-container {
+            width: 100%;
+            max-width: 1000px; 
+            margin: 0 auto; 
+            box-sizing: border-box;
+        }
+
+        /* ヘッダー（「猫の一日」のピンク色の帯） */
+        .main-header {
+            background-color: rgba(255, 192, 203, 0.9); /* 半透明のピンク色 */
+            padding: 12px 15px; /* 上下の余白を少し増やしました */
+            font-size: 24px;
+            font-weight: bold;
+            color: #333; /* 文字色 */
+            line-height: 1.2;
+        }
+
+        /* メインコンテンツ（サブヘッダーと本文） */
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.9); /* 白の半透明背景 */
+            padding: 10px 15px 20px 15px; /* 下側の余白を増やし、ピンクの帯に近づけました */
+            color: #333;
+        }
+
+        /* サブヘッダー（「ひたすら寝ています」） */
+        .sub-heading {
+            font-size: 16px; /* 画像のサイズ感に合わせました */
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* 本文テキスト */
+        .text-body {
+            font-size: 12px; /* 画像のテキストサイズに合わせて小さくしました */
+            line-height: 1.6;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <div class="background-image"></div>
-    <div class="content-container">
+    <div class="page-container">
         <header class="main-header">
             猫の一日
         </header>
