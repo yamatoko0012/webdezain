@@ -1,0 +1,17 @@
+@charset "UTF-8";
+body {
+    background-color: #fee;
+}
+h1 {
+    background-color: #faa;
+}
+div {
+    background-image: url( bg-airplane.jpg );
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+p {
+    text-align: center;
+    padding-top: 30px;
+}
