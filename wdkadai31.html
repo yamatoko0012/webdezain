@@ -3,65 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文字サンプル表示ページ</title>
+    <title>文字サンプル表示ページ (線なし)</title>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* スタイルを直接HTML内に記述する（または外部CSSファイルに記述） */
+        /* 全体の設定：画像に合わせて背景を少しグレーにし、中央に白いコンテンツエリアを配置 */
+        body {
+            background-color: #f0f0f0; /* 外側の灰色 */
+            font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* 画面上部に表示 */
+            min-height: 100vh;
+            padding-top: 50px; /* 上部からの余白 */
+        }
+
+        /* コンテナ：画像の中央の白い紙の部分 */
         .container {
-            width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            border: 1px solid #ccc;
+            width: 700px; /* 幅を調整 */
+            padding: 30px 40px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* 線をつけない */
+            border: none;
         }
 
-        /* 共通のフォント設定（必要に応じて） */
-        body {
-            font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+        /* --- スタイル共通設定 --- */
+        .sample-group {
+            margin-bottom: 40px; /* 各サンプル間の間隔 */
         }
-
-        h2 {
-            font-size: 32px;
-            margin-top: 40px;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
+        
+        /* タイトル部分 (例: 文字サンプル1 (16px)) */
+        .title {
+            font-size: 16px; /* 画像1行目のサイズに合わせる */
+            font-weight: bold;
+            margin: 0 0 15px 0;
+            padding: 0;
         }
-
-        /* 文字サンプル1 (class text1): 16px */
-        .text1 {
+        
+        /* --- 文字サンプル1 (class text1) --- */
+        .text1-group .title {
             font-size: 16px;
+            font-weight: normal; /* 太字ではないためnormalに */
+        }
+        
+        .text1 {
+            font-size: 16px; /* 文字の大きさ: 16px */
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin: 0;
         }
 
-        /* 文字サンプル2 (class text2): 24px */
+        /* --- 文字サンプル2 (class text2) --- */
+        .text2-group .title {
+            font-size: 24px; /* 見出しのサイズは24px */
+            font-weight: bold; /* 太字 */
+            margin-top: 30px;
+        }
+        
         .text2 {
-            font-size: 24px;
+            font-size: 24px; /* 文字の大きさ: 24px */
             line-height: 1.5;
-            margin-bottom: 30px;
+            margin-top: 15px;
+            /* 画像の行間隔に合わせて調整 */
+            padding-bottom: 10px; 
         }
 
-        /* 文字サンプル3 (class text3): 36px & Google Fonts (Kalam) */
-        .text3-title {
-            font-size: 36px;
-            margin-top: 40px;
-            margin-bottom: 10px;
-            border-bottom: none;
+        /* --- 文字サンプル3 (class text3) --- */
+        .text3-group .title {
+            font-size: 36px; /* 見出しのサイズは36px */
+            font-weight: bold; /* 太字 */
+            margin-top: 30px;
         }
-
+        
         .text3 {
             font-family: 'Kalam', cursive; /* Webフォントを適用 */
             font-size: 36px; /* 文字の大きさ: 36px */
             line-height: 1.4;
-            /* 画像の雰囲気に合わせて、少し斜体に見えるように font-style: italic; を適用 */
-            font-style: italic;
-            /* 画像の手書きの雰囲気と一致させるために、フォントの太さを調整することも可能 */
-            /* font-weight: 700; */
+            font-style: italic; /* 画像の手書き感を再現するために斜体を適用 */
+            margin-top: 15px;
+            /* 画像の英語部分は少し細い手書き感があるため、フォントの太さをnormalに戻す */
+            font-weight: normal; 
         }
 
     </style>
@@ -69,24 +90,22 @@
 <body>
     <div class="container">
         
-        <h2>文字サンプル1 (16px)</h2>
-        <p class="text1">
-            見出しや本文などのテキストは、ウェブページの重要な構成要素である。
-        </p>
+        <div class="sample-group text1-group">
+            <p class="title">文字サンプル1 (16px)</p>
+            <p class="text1">見出しや本文などのテキストは、ウェブページの重要な構成要素である。</p>
+        </div>
 
-        <hr>
-
-        <h2>文字サンプル2 (24px)</h2>
-        <p class="text2">
-            ブラウザーには、最低限の可読性を保証したデフォルトスタイルシートが搭載されており、HTMLだけのページでも、見出しは大きく太く、段落も読みやすいサイズで表示される。
-        </p>
-
-        <hr>
+        <div class="sample-group text2-group">
+            <p class="title">文字サンプル2 (24px)</p>
+            <p class="text2">ブラウザーには、最低限の可読性を保証したデフォルトスタイルシートが搭載されており、HTMLだけのページでも、見出しは大きく太く、段落も読みやすいサイズで表示される。</p>
+        </div>
         
-        <h2 class="text3-title">文字サンプル3 (36px)</h2>
-        <p class="text3">
-            The government of Tokyo confirmed five COVID-19 infections Sunday - the first time in six days the daily figure came in at under 10. (Japan Times)
-        </p>
+        <div class="sample-group text3-group">
+            <p class="title">文字サンプル3 (36px)</p>
+            <p class="text3">
+                The government of Tokyo confirmed five COVID-19 infections Sunday - the first time in six days the daily figure came in at under 10. (Japan Times)
+            </p>
+        </div>
 
     </div>
 </body>
