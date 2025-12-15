@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字サンプル表示ページ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* スタイルを直接HTML内に記述する（または外部CSSファイルに記述） */
+        .container {
+            width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 共通のフォント設定（必要に応じて） */
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+
+        /* 文字サンプル1 (class text1): 16px */
+        .text1 {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* 文字サンプル2 (class text2): 24px */
+        .text2 {
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* 文字サンプル3 (class text3): 36px & Google Fonts (Kalam) */
+        .text3-title {
+            font-size: 36px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: none;
+        }
+
+        .text3 {
+            font-family: 'Kalam', cursive; /* Webフォントを適用 */
+            font-size: 36px; /* 文字の大きさ: 36px */
+            line-height: 1.4;
+            /* 画像の雰囲気に合わせて、少し斜体に見えるように font-style: italic; を適用 */
+            font-style: italic;
+            /* 画像の手書きの雰囲気と一致させるために、フォントの太さを調整することも可能 */
+            /* font-weight: 700; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h2>文字サンプル1 (16px)</h2>
+        <p class="text1">
+            見出しや本文などのテキストは、ウェブページの重要な構成要素である。
+        </p>
+
+        <hr>
+
+        <h2>文字サンプル2 (24px)</h2>
+        <p class="text2">
+            ブラウザーには、最低限の可読性を保証したデフォルトスタイルシートが搭載されており、HTMLだけのページでも、見出しは大きく太く、段落も読みやすいサイズで表示される。
+        </p>
+
+        <hr>
+        
+        <h2 class="text3-title">文字サンプル3 (36px)</h2>
+        <p class="text3">
+            The government of Tokyo confirmed five COVID-19 infections Sunday - the first time in six days the daily figure came in at under 10. (Japan Times)
+        </p>
+
+    </div>
+</body>
+</html>
