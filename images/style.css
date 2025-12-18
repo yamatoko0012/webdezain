@@ -1,0 +1,8 @@
+@charset "UTF-8";
+/* マテリアルスイーツ CSS */
+body {
+    font-family: "Yu Gothic", YuGothic, "MS Pゴシック", Meiryo;
+    font-size: 16px;
+    background-image: url(../images/gold_back.jpg);
+    background-repeat: repeat-y;
+}
