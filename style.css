@@ -1,17 +1,39 @@
 @charset "UTF-8";
+/* マテリアルスイーツ CSS */
 body {
-    background-color: #fee;
+    font-family: "Yu Gothic", YuGothic, "MS Pゴシック", Meiryo;
+    font-size: 16px;
+    background-image: url(../images/gold_back.jpg);
+    background-repeat: repeat-y;
+}　
+/* リセット CSS */
+h1,h2,h3,h4,p,ul,li{
+  margin:0;
+  padding:0;
 }
-h1 {
-    background-color: #faa;
+
+/* ヘッダー CSS */
+header{
+  width:980px;
+  color:brown;
+  background-color:bisque;
+  overflow:hidden;
 }
-div {
-    background-image: url( bg-airplane.jpg );
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+
+#logo{
+  display:block;
+  margin-left:10px;
+  margin-bottom:10px;
+  float:left;
 }
-p {
-    text-align: center;
-    padding-top: 30px;
+
+#head_meg{
+  margin-top:20px;
+  margin-left:70px;
+  float:left;
+}
+
+h1{
+  font-size:28px;
+  color:crimson;
 }
