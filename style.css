@@ -65,3 +65,36 @@ nav a:hover{
   font-weight:bold;
   background-image:url(images/silvar.png);
 }
+/* メインコンテンツ css */
+main{
+  width:960px;
+  padding-top:20px;
+  padding-left:20px;
+  padding-bottom:20px;
+  background-color:antiquewhite;
+  overflow:hidden;
+}
+
+h2{
+  font-size:24px;
+  width:400px;
+  height:60px;
+  margin-bottom:20px;
+  line-height:60px;
+  text-align:center;
+  color:darkred;
+  background-image:url(../images/silver-h2.png);
+}
+
+h3{
+  width:220px;
+  height:70px;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:20px;
+  line-height:70px;
+  text-align:center;
+  color:darkred;
+  background-image:url(../images/frame.png);
+  float:left;
+}
