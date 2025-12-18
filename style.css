@@ -83,7 +83,7 @@ h2{
   line-height:60px;
   text-align:center;
   color:darkred;
-  background-image:url(../images/silver-h2.png);
+  background-image:url(images/silver-h2.png);
 }
 
 h3{
@@ -95,6 +95,6 @@ h3{
   line-height:70px;
   text-align:center;
   color:darkred;
-  background-image:url(../images/frame.png);
+  background-image:url(images/frame.png);
   float:left;
 }
