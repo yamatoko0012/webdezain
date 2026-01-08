@@ -35,27 +35,31 @@ h1{
 }
 /* ナビゲーション css */
 nav{
-  padding-left:10px;
-  padding-right:10px;
+    padding-left:10px;
+    padding-right:10px;
 }
+
 nav ul{list-style-type:none;}
+
 nav li{
-  width:160px;
-  height:60px;
-  float:left;
+    width:160px;
+    height:60px;
+    float:left;
 }
+
 nav a{
-  display:block;
-  line-height:60px;
-  text-align:center;
-  color:darkred;
-  text-decoration:none;
-  background-image:url(images/gold.png);
+    display:block;
+    line-height:60px;
+    text-align:center;
+    color:darkred;
+    text-decoration:none;
+    background-image:url(../images/gold.png);
 }
+
 nav a:hover{
-  color:crimson;
-  font-weight:bold;
-  background-image:url(images/silvar.png);
+    color:crimson;
+    font-weight:bold;
+    background-image:url(../images/silvar.png);
 }
 /* メインコンテンツ css */
 main{
