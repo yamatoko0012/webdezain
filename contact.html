@@ -1,16 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>マテリアルスイーツ：問い合わせ</title>
-    <meta name="description" content="マテリアルスイーツの問い合わせフォームです。">
+    <title>お問い合わせ | マテリアルスイーツ</title>
+    <meta name="description" content="マテリアルスイーツへのお問い合わせページです。ご予約や素材に関するご質問など、お気軽にお寄せください。">
     <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
-<div id="wrap">
+
     <header>
-        <img src="images/logo.png" id="logo">
-        <div id="head_msg">
-            <h1>マテリアルスイーツ：問い合わせ</h1>
-            <p>お問い合わせや感想などは、下記メールフォームよりお願いします。</p>
+        <div id="logo">
+            <img src="images/logo.png" alt="お店のロゴ">
         </div>
+        
+        <div id="head_meg">
+            <h1>マテリアルスイーツ</h1>
+            <p>伝統と素材にこだわった季節のフルーツを使用したスイーツのお店です。</p>
+        </div>
+
+        <img src="images/blanc_head.jpg" alt="金のモンブランヘッダー画像">
+
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="shop.html">店舗案内</a></li>
+                <li><a href="#">スイーツ</a></li>
+                <li><a href="#">素材について</a></li>
+                <li><a href="#">予約販売</a></li>
+                <li><a href="contact.html">問い合わせ</a></li>
+            </ul>
+        </nav>
     </header>
-</div>
+
+    <main>
+        <article>
+            <h2>お問い合わせ</h2>
+            <p>
+                当店のスイーツやサービスについて、ご不明な点がございましたら以下のフォームよりお気軽にお問い合わせください。<br>
+                通常、3営業日以内に担当者より返信させていただきます。
+            </p>
+
+            <form action="confirm.html" method="post" class="contact-form">
+                
+                <section class="form-item">
+                    <label for="name">お名前 <span class="required">必須</span></label>
+                    <input type="text" id="name" name="user_name" placeholder="例：山田 花子" required>
+                </section>
+
+                <section class="form-item">
+                    <label for="email">メールアドレス <span class="required">必須</span></label>
+                    <input type="email" id="email" name="user_email" placeholder="example@mail.com" required>
+                </section>
+
+                <section class="form-item">
+                    <label for="category">お問い合わせ項目</label>
+                    <select id="category" name="user_category">
+                        <option value="">選択してください</option>
+                        <option value="reserve">ご予約について</option>
+                        <option value="product">商品・素材について</option>
+                        <option value="access">アクセス・店舗について</option>
+                        <option value="other">その他</option>
+                    </select>
+                </section>
+
+                <section class="form-item">
+                    <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
+                    <textarea id="message" name="user_message" rows="8" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+                </section>
+
+                <div class="form-submit">
+                    <button type="submit" class="submit-btn">内容を確認して送信する</button>
+                </div>
+
+            </form>
+        </article>
+    </main>
+
+    <footer>
+        <small>Copyright 2018 Material Sweets All Rights Reserved.</small>
+    </footer>
+
+</body>
+</html>
