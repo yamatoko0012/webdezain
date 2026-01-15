@@ -2,88 +2,102 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>お問い合わせ | マテリアルスイーツ</title>
-    <meta name="description" content="マテリアルスイーツへのお問い合わせページです。商品や店舗に関するご質問を承っております。">
-    <link href="style/style.css" rel="stylesheet">
+    <title>マテリアルス sweets：問い合わせ</title>
+    <meta name="description" content="マテリアルスイーツの問い合わせフォームです。">
+    <link rel="stylesheet" href="style/style.css" rel="stylesheet">
 </head>
 <body>
 
+<div id="wrap">
     <header>
-        <div id="logo">
-            <img src="images/logo.png" alt="お店のロゴ">
-        </div>
-        
+        <img src="images/logo.png" id="logo" alt="マテリアルスイーツ">
         <div id="head_meg">
-            <h1>マテリアルスイーツ</h1>
-            <p>伝統と素材にこだわった季節のフルーツを使用したスイーツのお店です。</p>
+            <h1>マテリアルスイーツ：問い合わせ</h1>
+            <p>お問い合わせや感想などは、下記メールフォームよりお願いします。</p>
         </div>
-
-        <nav>
-            <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="shop.html">店舗案内</a></li>
-                <li><a href="#">スイーツ</a></li>
-                <li><a href="#">素材について</a></li>
-                <li><a href="#">予約販売</a></li>
-                <li><a href="contact.html">問い合わせ</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        <article>
-            <h2>お問い合わせ</h2>
-            <p>
-                当店に関するご質問、ご意見などがございましたら、以下のフォームよりお気軽にお問い合わせください。<br>
-                通常、3営業日以内に担当者より返信させていただきます。
-            </p>
+    <article>
+        <h2>お問い合わせ</h2>
+        <p id="margin_p">
+            当店の項目について質問やご意見については下記フォームよりお問い合わせください。<br>
+            また、任意ですがアンケート内容にもご協力お願い致します。
+        </p>
 
-            <section id="contact_form">
-                <form action="confirm.php" method="post">
-                    
-                    <div class="form_group">
-                        <label for="name">お名前 <span class="required">必須</span></label>
-                        <input type="text" id="name" name="name" placeholder="例：山田 花子" required>
-                    </div>
+        <form name="form1" method="get" action="form.cgi">
+            <table>
+                <tr>
+                    <th>氏名（必須）</th>
+                    <td>
+                        <input type="text" name="name" size="30">
+                    </td>
+                </tr>
 
-                    <div class="form_group">
-                        <label for="email">メールアドレス <span class="required">必須</span></label>
-                        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
-                    </div>
+                <tr>
+                    <th>Eメール（必須）</th>
+                    <td>
+                        <input type="email" name="email" size="30">
+                    </td>
+                </tr>
 
-                    <div class="form_group">
-                        <label for="subject">お問い合わせの種類</label>
-                        <select id="subject" name="subject">
-                            <option value="商品について">商品について</option>
-                            <option value="店舗について">店舗について</option>
-                            <option value="取材・広報について">取材・広報について</option>
-                            <option value="その他">その他</option>
+                <tr>
+                    <th>電話番号（任意）</th>
+                    <td>
+                        <input type="tel" name="tel" size="30">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>アンケート（任意）</th>
+                    <td>
+                        <p>性別</p>
+                        <input type="radio" name="sex" value="man" checked="checked"> 男
+                        <input type="radio" name="sex" value="woman"> 女
+
+                        <p>来店回数</p>
+                        <input type="radio" name="riyu" value="1"> 何度もきたことがある
+                        <input type="radio" name="riyu" value="2"> 来店したことはある
+                        <input type="radio" name="riyu" value="3"> 来店したことはない
+
+                        <p>当店で好きなスイーツ</p>
+                        <input type="checkbox" name="like" value="1"> モンブラン
+                        <input type="checkbox" name="like" value="2"> 苺のショートケーキ
+                        <input type="checkbox" name="like" value="3"> マカロン
+                        <input type="checkbox" name="like" value="4"> パウンドケーキ
+                        <input type="checkbox" name="like" value="5"> その他
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>用件（必須）</th>
+                    <td>
+                        <select name="inquiry">
+                            <option value="">選択してください</option>
+                            <option value="sweets">スイーツについて</option>
+                            <option value="reservation">予約販売について</option>
+                            <option value="request">当店への要望・ご意見</option>
+                            <option value="other">その他</option>
                         </select>
-                    </div>
+                    </td>
+                </tr>
 
-                    <div class="form_group">
-                        <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
-                        <textarea id="message" name="message" rows="8" placeholder="こちらにご質問内容をご記入ください" required></textarea>
-                    </div>
+                <tr>
+                    <th>問い合わせ内容（必須）</th>
+                    <td>
+                        <textarea name="freeans" rows="5" cols="60"></textarea>
+                    </td>
+                </tr>
 
-                    <div class="form_agreement">
-                        <input type="checkbox" id="agreement" name="agreement" required>
-                        <label for="agreement"><a href="#">プライバシーポリシー</a>に同意する</label>
-                    </div>
-
-                    <div class="form_buttons">
-                        <input type="submit" value="送信する" class="btn_submit">
-                        <input type="reset" value="リセット" class="btn_reset">
-                    </div>
-
-                </form>
-            </section>
-        </article>
-    </main>
-
-    <footer>
-        <small>Copyright 2018 Material Sweets All Rights Reserved.</small>
-    </footer>
+                <tr>
+                    <td colspan="2" id="submit">
+                        <input type="submit" value="送信">
+                        <input type="reset" value="取り消し">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </article>
+</div>
 
 </body>
 </html>
