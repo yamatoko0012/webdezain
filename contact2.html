@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>マテリアルスイーツ</title>
+    <meta name="description" content="ページの説明">
+    <link rel="stylesheet" href="style/template.css">
+</head>
+<body>
+
+<div id="wrap">
+    <header>
+        <img src="images/logo.png" id="logo" alt="マテリアルスイーツ">
+        <div id="head_meg">
+            <h1>大見出し</h1>
+            <p>大見出しの段落</p>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <h2>メインコンテンツの見出し</h2>
+            <p>メインコンテンツの段落</p>
+
+            <p id="margin_p">
+                当店の項目について質問やご意見については下記フォームよりお問い合わせください。<br>
+                また、任意ですがアンケート内容にもご協力お願い致します。
+            </p>
+
+            <form name="form1" method="get" action="form.cgi">
+                <table>
+                    <tr>
+                        <th>氏名（必須）</th>
+                        <td><input type="text" name="name" size="30"></td>
+                    </tr>
+                    <tr>
+                        <th>Eメール（必須）</th>
+                        <td><input type="email" name="email" size="30"></td>
+                    </tr>
+                    <tr>
+                        <th>電話番号（任意）</th>
+                        <td><input type="tel" name="tel" size="30"></td>
+                    </tr>
+                    <tr>
+                        <th>アンケート（任意）</th>
+                        <td>
+                            <p>性別</p>
+                            <input type="radio" name="sex" value="man" checked="checked"> 男
+                            <input type="radio" name="sex" value="woman"> 女
+                            <p>来店回数</p>
+                            <input type="radio" name="riyu" value="1"> 何度もきたことがある
+                            <input type="radio" name="riyu" value="2"> 来店したことはある
+                            <input type="radio" name="riyu" value="3"> 来店したことはない
+                            <p>当店で好きなスイーツ</p>
+                            <input type="checkbox" name="like" value="1"> モンブラン
+                            <input type="checkbox" name="like" value="2"> 苺のショートケーキ
+                            <input type="checkbox" name="like" value="3"> マカロン
+                            <input type="checkbox" name="like" value="4"> パウンドケーキ
+                            <input type="checkbox" name="like" value="5"> その他
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>用件（必須）</th>
+                        <td>
+                            <select name="inquiry">
+                                <option value="">選択してください</option>
+                                <option value="sweets">スイーツについて</option>
+                                <option value="reservation">予約販売について</option>
+                                <option value="request">当店への要望・ご意見</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>問い合わせ内容（必須）</th>
+                        <td><textarea name="freeans" rows="5" cols="60"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="submit">
+                            <input type="submit" value="送信">
+                            <input type="reset" value="取り消し">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </article>
+    </main>
+</div>
+
+</body>
+</html>
