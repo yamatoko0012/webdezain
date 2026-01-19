@@ -2,9 +2,9 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>マテリアルスイーツ</title>
-    <meta name="description" content="ページの説明">
-    <link rel="stylesheet" href="style/template.css">
+    <title>マテリアルスイーツ：問い合わせ</title>
+    <meta name="description" content="マテリアルスイーツの問い合わせフォームです。">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -12,17 +12,27 @@
     <header>
         <img src="images/logo.png" id="logo" alt="マテリアルスイーツ">
         <div id="head_meg">
-            <h1>大見出し</h1>
-            <p>大見出しの段落</p>
+            <h1>マテリアルスイーツ：問い合わせ</h1>
+            <p>お問い合わせや感想などは、下記メールフォームよりお願いします。</p>
         </div>
+        <img src="images/blanc_head.jpg" alt="金のモンブランヘッダー画像">
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="shop.html">店舗案内</a></li>
+                <li><a href="#">スイーツ</a></li>
+                <li><a href="#">素材について</a></li>
+                <li><a href="#">予約販売</a></li>
+                <li><a href="#">問い合わせ</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <article>
-            <h2>メインコンテンツの見出し</h2>
-            <p>メインコンテンツの段落</p>
-
-            <p id="margin_p">
+            <h2>お問い合わせ</h2>
+            <p class="margin_p">
                 当店の項目について質問やご意見については下記フォームよりお問い合わせください。<br>
                 また、任意ですがアンケート内容にもご協力お願い致します。
             </p>
@@ -31,26 +41,37 @@
                 <table>
                     <tr>
                         <th>氏名（必須）</th>
-                        <td><input type="text" name="name" size="30"></td>
+                        <td>
+                            <input type="text" name="name" size="30">
+                        </td>
                     </tr>
+
                     <tr>
                         <th>Eメール（必須）</th>
-                        <td><input type="email" name="email" size="30"></td>
+                        <td>
+                            <input type="email" name="email" size="30">
+                        </td>
                     </tr>
+
                     <tr>
                         <th>電話番号（任意）</th>
-                        <td><input type="tel" name="tel" size="30"></td>
+                        <td>
+                            <input type="tel" name="tel" size="30">
+                        </td>
                     </tr>
+
                     <tr>
                         <th>アンケート（任意）</th>
                         <td>
                             <p>性別</p>
                             <input type="radio" name="sex" value="man" checked="checked"> 男
                             <input type="radio" name="sex" value="woman"> 女
+
                             <p>来店回数</p>
                             <input type="radio" name="riyu" value="1"> 何度もきたことがある
                             <input type="radio" name="riyu" value="2"> 来店したことはある
                             <input type="radio" name="riyu" value="3"> 来店したことはない
+
                             <p>当店で好きなスイーツ</p>
                             <input type="checkbox" name="like" value="1"> モンブラン
                             <input type="checkbox" name="like" value="2"> 苺のショートケーキ
@@ -59,6 +80,7 @@
                             <input type="checkbox" name="like" value="5"> その他
                         </td>
                     </tr>
+
                     <tr>
                         <th>用件（必須）</th>
                         <td>
@@ -71,10 +93,14 @@
                             </select>
                         </td>
                     </tr>
+
                     <tr>
                         <th>問い合わせ内容（必須）</th>
-                        <td><textarea name="freeans" rows="5" cols="60"></textarea></td>
+                        <td>
+                            <textarea name="freeans" rows="5" cols="60"></textarea>
+                        </td>
                     </tr>
+
                     <tr>
                         <td colspan="2" id="submit">
                             <input type="submit" value="送信">
@@ -85,6 +111,10 @@
             </form>
         </article>
     </main>
+
+    <footer>
+        <small>Copyright 2018 Material Sweets All Rights Reserved.</small>
+    </footer>
 </div>
 
 </body>
